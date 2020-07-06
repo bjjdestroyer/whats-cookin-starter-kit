@@ -49,3 +49,28 @@ Your linter will look only at the JavaScript files you have within the src and t
   "name": [string]
 }
 ```
+
+
+### Project Timeline:
+
+#### Iteration 1:
+- create user & recipe class
+- create test file for user & recipe class
+
+#### Iteration 2:
+- create pantry class
+- create pantry test file
+
+#### Iteration 3:
+- Set up basic HTML layout
+- Set up basic CSS layout
+- Set up event listeners and helper functions in scripts.js
+
+#### Iteration 4 (MVP):
+- DOM manipulation - recipe images are on site; data can populate site
+- local storage for user?
+- fully functional; can
+	- save favorites and recipes to cook
+	- list what user has in pantry
+	- list what needs to be bought at grocery store
+	- CSS is clean and looks nice
