@@ -4,6 +4,10 @@ class Ingredient {
     this.name = name;
     this.estimatedCostInCents = estimatedCostInCents
   }
+
+  returnIngredientPriceFromID(id) {
+    
+  }
 }
 
 module.exports = Ingredient;
