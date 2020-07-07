@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const User = require('./src/User');
+const User = require('../src/User');
 
 describe('User', function() {
   let user;
@@ -18,5 +18,7 @@ describe('User', function() {
     expect(user).to.be.an.instanceOf(User);
   })
 
-  
+  it('should have a name', function() {
+
+  })
 })
