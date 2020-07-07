@@ -26,6 +26,10 @@ class Recipe {
       totalPrice + (ingredient.quantity.amount * this.getIngredientPrice(ingredient.id))
     }, 0)
   }
+
+  returnRecipeInstructions() {
+    return this.instructions;
+  }
 }
 
 module.exports = Recipe;

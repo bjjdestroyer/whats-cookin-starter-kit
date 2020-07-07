@@ -1,0 +1,2 @@
+const Recipe = require('../Recipe');
+
