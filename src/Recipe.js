@@ -1,3 +1,5 @@
+const fullIngredientsList = require('./data/ingredients.js');
+
 class Recipe {
   constructor(id, image, ingredients, instructions, name, tags) {
     this.id = id;
@@ -8,9 +10,20 @@ class Recipe {
     this.tags = tags;
   }
 
+  getIngredientPrice(id) {
+    let ingredientPrice;
+    fullIngredientsList.forEach(ingredient => {
+      if (ingredient.id === id) {
+        ingredientPrice = ingredient.estimatedCostInCents;
+        break;
+      }
+    })
+    return ingredientPrice;
+  }
+
   getTotalIngredientCost() {
-    this.ingredients.reduce(ingredient, totalPrice, function() {
-      totalPrice + (ingredient.quantity.amount * /* ingredientPrice method, where ingredientPrice takes in an id and returns the estimatedCostInCents from that id's object*/)
+    this.ingredients.reduce((ingredient, totalPrice) => {
+      totalPrice + (ingredient.quantity.amount * this.getIngredientPrice(ingredient.id))
     }, 0)
   }
 }
