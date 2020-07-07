@@ -23,8 +23,16 @@ class User {
     });
   }
 
-  searchPantry() {
+  searchPantry(recipe) {
+    recipe.ingredients.filter( ingredient => {
+      if (this.pantry.includes(!ingredient)) {
+        return ingredient;
+      }
+    });
 
+    // need to check to see if recipe ingredient is in pantry;
+    // if statement to see if ingredient isn't in the pantry
+    // return ingredient if it's not in the pantry
   }
 
   checkForIngredients() {
@@ -32,7 +40,7 @@ class User {
   }
 
   shopForIngredients() {
-    
+
   }
 }
 
