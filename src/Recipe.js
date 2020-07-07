@@ -1,4 +1,4 @@
-const fullIngredientsList = require('./data/ingredients');
+const fullIngredientsList = require('../data/ingredients');
 
 class Recipe {
   constructor(id, image, ingredients, instructions, name, tags) {

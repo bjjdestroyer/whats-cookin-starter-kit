@@ -1,4 +1,4 @@
-const users = require('./data/users');
+const users = require('../data/users');
 const Pantry = require('./Pantry');
 const Recipe = require('./Recipe');
 const Recipes = require('./Recipes');
@@ -16,4 +16,4 @@ class User {
 
 }
 
-module.exports = Users;
+module.exports = User;

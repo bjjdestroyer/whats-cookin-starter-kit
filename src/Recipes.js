@@ -1,4 +1,4 @@
-const Recipe = require('../Recipe');
+const Recipe = require('./Recipe');
 
 class Recipes {
   constructor(recipes) {

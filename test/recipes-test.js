@@ -3,7 +3,7 @@ const expect = chai.expect;
 
 const Recipes = require('../src/Recipes');
 const ingredients = require('../data/ingredients');
-const allRecipes = requires('../data/recipes');
+const allRecipes = require('../data/recipes');
 
 describe('Recipe', function () {
   let recipes;
@@ -74,10 +74,10 @@ describe('Recipe', function () {
     let noIngredient = recipes.filteredByIngredient('12');
     expect(noIngredient).to.equal('Please enter a valid ingredient');
 
-    let noIngredient = recipes.filteredByIngredient('*');
+    noIngredient = recipes.filteredByIngredient('*');
     expect(noIngredient).to.equal('Please enter a valid ingredient');
 
-    let noIngredient = recipes.filteredByIngredient('  ');
+    noIngredient = recipes.filteredByIngredient('  ');
     expect(noIngredient).to.equal('Please enter a valid ingredient');
   });
 });
