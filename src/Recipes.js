@@ -10,6 +10,6 @@ class Recipes {
   }
 
   filterRecipesByIngredient(ingredientName) {
-    const ingredientList = this.recipes.filter(recipe => recipe.getIngredientNameList)
+    return this.recipes.filter(recipe => recipe.getIngredientNameList().includes(ingredientName));
   }
 }
