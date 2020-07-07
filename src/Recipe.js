@@ -1,4 +1,4 @@
-const fullIngredientsList = require('./data/ingredients.js');
+const fullIngredientsList = require('./data/ingredients');
 
 class Recipe {
   constructor(id, image, ingredients, instructions, name, tags) {
@@ -19,6 +19,10 @@ class Recipe {
       }
     })
     return ingredientPrice;
+  }
+
+  getIngredientNameList() {
+    return this.ingredients.map(ingredient => ingredient.name);
   }
 
   getTotalIngredientCost() {

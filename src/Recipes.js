@@ -1,6 +1,5 @@
 const Recipe = require('../Recipe');
 
-<<<<<<< HEAD
 class Recipes {
   constructor(recipes) {
     this.recipes = recipes;
@@ -9,6 +8,8 @@ class Recipes {
   filterRecipesByTag(tag) {
     return this.recipes.filter(recipe => recipe.tags.includes(tag));
   }
+
+  filterRecipesByIngredient(ingredientName) {
+    const ingredientList = this.recipes.filter(recipe => recipe.getIngredientNameList)
+  }
 }
-=======
->>>>>>> 7dc1a4f27cf7500e9367219f410ccec1045ca5f3
