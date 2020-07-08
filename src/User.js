@@ -1,14 +1,25 @@
 const users = require('../data/users');
+const allIngredients = require('../data/ingredients');
 const Pantry = require('./Pantry');
 const Recipe = require('./Recipe');
 const Recipes = require('./Recipes');
 
 class User {
   constructor(userObj) {
+    this.id = userObj.id
     this.pantry = userObj.pantry;
     this.favoriteRecipes = [];
     this.recipesToCook = [];
   }
+
+  addToFavorites(recipe) {
+    this.favoriteRecipes.push(recipe);
+  }
+
+  addToRecipesToCook (recipe) {
+    this.recipesToCook.push(recipe);
+  } 
+
   filterRecipes(recipesToFilter, tag) {
     return recipesToFilter.filter(recipe => recipe.tags.includes(tag));
   }
@@ -25,7 +36,7 @@ class User {
 
   searchPantry(recipe) {
     recipe.ingredients.filter( ingredient => {
-      if (this.pantry.includes(!ingredient)) {
+      if (this.pantry.indexOf(ingredient) === -1) {
         return ingredient;
       }
     });
@@ -37,20 +48,63 @@ class User {
 
   checkForIngredients(recipe) {
     // Checking to see if you have the right amount of ingredients for a recipe
-    recipe.ingredients.filter( ingredient => {
-      for (let i = 0; i < this.pantry.length; i++) {
-        if (this.pantry.includes(ingredient) && ingredient.amount > this.pantry[i].amount) {
-          let amountNeeded = ingredient.amount - this.pantry[i].amount;
-          return `You need ${amountNeeded} more of ${ingredient.name} to make ${recipe}.`;
+    // use reduce on recipe.ingredients array; acc is neededList, cv is 
+    // ingredient. Iterate over pantry contents with forEach. If ingredient
+    // matches pantry ingredient, compare amounts and return
+    // if pantry doesn't include the ingredient, return recipe ingredient
+    recipe.ingredients.reduce((neededList, ingredient) => {
+      this.pantry.forEach( pantryIngredient => {
+        if (this.pantry.includes(ingredient) && neededList[ingredient]) {
+          neededList[ingredient] = neededList[ingredient] + pantryIngredient.amount;
+        } else if (this.pantry.includes(ingredient) && !neededList[ingredient]) {
+          let neededList[ingredient] = ingredient.amount;
+          neededList[ingredient] = neededList[ingredient] + pantryIngredient.amount;
         }
-
-      }
-    });
+      })
+    }, {})
+    
+    // recipe.ingredients.filter( recipeIngredient => {
+    //   this.pantry.forEach( pantryIngredient => {
+    //     if (recipeIngredient.amount > pantryIngredient.amount) {
+    //       let amountNeeded = recipeIngredient.amount - pantryIngredient.amount;
+    //       return amountNeeded;
+    //     }
+    //   });
+    // });
   }
 
-  shopForIngredients() {
+  amountOfIngredientsNeeded(recipe) {
+
+  }
+
+  shopForIngredients(recipe) {
     // ingredients needed and cost
     // round up for non-integers?
+    let ingredientsNeeded = this.checkForIngredients();
+    let ingredientsKeys = Object.keys(ingredientsNeeded);
+
+    ingredientsKeys.reduce((shoppingList, ingredient) => {
+      let ingredientInArray = allIngredients.find(ingredient => {
+        allIngredients.name === ingredient;
+      });
+
+      if (!shoppingList[ingredient]) {
+        shoppingList[ingredient] = 0;
+        shoppingList[ingredient].amount = ingredientsNeeded[ingredient];
+        shoppingList[ingredient].cost = ingredientsNeeded[ingredient] * ingredientInArray.estimatedCostInCents;
+      } else {
+        shoppingList[ingredient].amount = ingredientsNeeded[ingredient];
+        shoppingList[ingredient].cost = ingredientsNeeded[ingredient] * ingredientInArray.estimatedCostInCents;
+      }
+    }, {})
+
+    // find the keys for ingredients needed.
+    // use the array to access the values
+    // return new object with keys and values of amountNeeded and cost
+
+
+    
+
   }
 }
 
