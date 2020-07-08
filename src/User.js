@@ -57,25 +57,13 @@ class User {
         if (this.pantry.includes(ingredient) && neededList[ingredient]) {
           neededList[ingredient] = neededList[ingredient] + pantryIngredient.amount;
         } else if (this.pantry.includes(ingredient) && !neededList[ingredient]) {
-          let neededList[ingredient] = ingredient.amount;
+          neededList[ingredient] = ingredient.amount;
           neededList[ingredient] = neededList[ingredient] + pantryIngredient.amount;
         }
       })
     }, {})
-    
-    // recipe.ingredients.filter( recipeIngredient => {
-    //   this.pantry.forEach( pantryIngredient => {
-    //     if (recipeIngredient.amount > pantryIngredient.amount) {
-    //       let amountNeeded = recipeIngredient.amount - pantryIngredient.amount;
-    //       return amountNeeded;
-    //     }
-    //   });
-    // });
   }
 
-  amountOfIngredientsNeeded(recipe) {
-
-  }
 
   shopForIngredients(recipe) {
     // ingredients needed and cost
