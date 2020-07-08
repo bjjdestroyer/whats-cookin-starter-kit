@@ -6,7 +6,8 @@ const Recipes = require('./Recipes');
 
 class User {
   constructor(userObj) {
-    this.id = userObj.id
+    this.id = userObj.id;
+    this.name = userObj.name;
     this.pantry = userObj.pantry;
     this.favoriteRecipes = [];
     this.recipesToCook = [];
