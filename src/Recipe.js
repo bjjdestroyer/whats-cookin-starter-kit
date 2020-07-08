@@ -26,8 +26,8 @@ class Recipe {
   }
 
   getTotalIngredientCost() {
-    this.ingredients.reduce((ingredient, totalPrice) => {
-      totalPrice + (ingredient.quantity.amount * this.getIngredientPrice(ingredient.id))
+    this.ingredients.reduce((totalPrice, ingredient) => {
+      return totalPrice + (ingredient.quantity.amount * this.getIngredientPrice(ingredient.id))
     }, 0)
   }
 
