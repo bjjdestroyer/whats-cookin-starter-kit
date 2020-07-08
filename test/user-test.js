@@ -53,4 +53,10 @@ describe('User', function() {
     user.addRecipeToFavorites(recipe);
     expect(user.favoriteRecipes.length).to.equal(1);
   })
+
+  it('should be able to add a recipe to a recipe planner', function() {
+    const recipe = recipes[0];
+    user.saveRecipeForLater();
+    expect(user.mealsToCook[0]).to.deep.equal(recipe);
+  })
 })
