@@ -59,4 +59,10 @@ describe('User', function() {
     user.saveRecipeForLater();
     expect(user.mealsToCook[0]).to.deep.equal(recipe);
   })
+
+  it.skip('should be able to check the pantry for sufficient ingredients for a saved recipe', function() {
+    const recipe = recipes[0];
+    let pantryMessage;// = Have user use pantry methods to evaluate
+    expect(pantryMessage).to.equal("You do not currently have sufficient ingredients to cook this recipe.");
+  })
 })
