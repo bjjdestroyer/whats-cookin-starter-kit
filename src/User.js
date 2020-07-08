@@ -35,7 +35,7 @@ class User {
 
   searchPantry(recipe) {
     recipe.ingredients.filter( ingredient => {
-      if (this.pantry.includes(!ingredient)) {
+      if (this.pantry.indexOf(ingredient) === -1) {
         return ingredient;
       }
     });
@@ -47,14 +47,13 @@ class User {
 
   checkForIngredients(recipe) {
     // Checking to see if you have the right amount of ingredients for a recipe
-    recipe.ingredients.filter( ingredient => {
-      for (let i = 0; i < this.pantry.length; i++) {
-        if (this.pantry.includes(ingredient) && ingredient.amount > this.pantry[i].amount) {
-          let amountNeeded = ingredient.amount - this.pantry[i].amount;
-          return `You need ${amountNeeded} more of ${ingredient.name} to make ${recipe}.`;
+    recipe.ingredients.filter( recipeIngredient => {
+      this.pantry.forEach( pantryIngredient => {
+        if (recipeIngredient.amount > pantryIngredient.amount) {
+          let amountNeeded = recipeIngredient.amount - pantryIngredient.amount;
+          return `You need ${amountNeeded} more of ${recipeIngredient.name} to make ${recipe}.`;
         }
-
-      }
+      });
     });
   }
 
