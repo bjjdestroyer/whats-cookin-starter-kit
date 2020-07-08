@@ -3,6 +3,7 @@ const expect = chai.expect;
 
 const User = require('../src/User');
 const users = require('../data/users');
+const recipes = require('../data/recipes');
 
 describe('User', function() {
   let user;
@@ -28,9 +29,28 @@ describe('User', function() {
   })
 
   it('should have a pantry', function() {
-    console.log(user.pantry);
     expect(user.pantry).to.be.an("array");
   })
 
-  
+  it('should have no favorite recipes by default', function() {
+    expect(user.favoriteRecipes).to.deep.equal([]);
+  })
+
+  it('should have no recipes to cook by default', function() {
+    expect(user.recipesToCook).to.deep.equal([]);
+  })
+
+  it('should be able to favorite a recipe', function() {
+    const recipe = recipes[0];
+    user.addRecipeToFavorites(recipe);
+    expect(user.favoriteRecipes[0]).to.deep.equal(recipe);
+  })
+
+  it('should only be able to add a recipe once', function() {
+    const recipe = recipes[0];
+    user.addRecipeToFavorites(recipe);
+    user.addRecipeToFavorites(recipe);
+    user.addRecipeToFavorites(recipe);
+    expect(user.favoriteRecipes.length).to.equal(1);
+  })
 })
