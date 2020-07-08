@@ -5,10 +5,20 @@ const Recipes = require('./Recipes');
 
 class User {
   constructor(userObj) {
+    this.id = userObj.id
     this.pantry = userObj.pantry;
     this.favoriteRecipes = [];
     this.recipesToCook = [];
   }
+
+  addToFavorites(recipe) {
+    this.favoriteRecipes.push(recipe);
+  }
+
+  addToRecipesToCook (recipe) {
+    this.recipesToCook.push(recipe);
+  } 
+
   filterRecipes(recipesToFilter, tag) {
     return recipesToFilter.filter(recipe => recipe.tags.includes(tag));
   }
