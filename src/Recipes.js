@@ -13,3 +13,5 @@ class Recipes {
     return this.recipes.filter(recipe => recipe.getIngredientNameList().includes(ingredientName));
   }
 }
+
+module.exports = Recipes;

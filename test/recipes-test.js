@@ -5,7 +5,7 @@ const Recipes = require('../src/Recipes');
 const ingredients = require('../data/ingredients');
 const allRecipes = require('../data/recipes');
 
-describe('Recipe', function () {
+describe('Recipes', function () {
   let recipes;
 
   beforeEach(function () {
