@@ -56,8 +56,8 @@ describe('User', function() {
 
   it('should be able to add a recipe to a recipe planner', function() {
     const recipe = recipes[0];
-    user.addToRecipesToCook();
-    expect(user.mealsToCook[0]).to.deep.equal(recipe);
+    user.addToRecipesToCook(recipe);
+    expect(user.recipesToCook[0]).to.deep.equal(recipe);
   });
 
   it('should only be able to add a recipe once to recipe planner', function () {
@@ -65,14 +65,14 @@ describe('User', function() {
     user.addToRecipesToCook(recipe);
     user.addToRecipesToCook(recipe);
     user.addToRecipesToCook(recipe);
-    expect(user.favoriteRecipes.length).to.equal(1);
+    expect(user.recipesToCook.length).to.equal(1);
   });
 
-//   //it('should be able to filter recipes by tag', function () {
-//     const recipe = recipes[0];
-//     user.addToRecipeToCook();
-//     expect(user.mealsToCook[0]).to.deep.equal(recipe);
-//   });
+  // it('should be able to filter recipes by tag', function () {
+  //   const recipe = recipes[0];
+  //   user.addToRecipeToCook();
+  //   expect(user.mealsToCook[0]).to.deep.equal(recipe);
+  // });
 
 //   //it('should be able to search for recipes', function () {
 //     const recipe = recipes[0];
