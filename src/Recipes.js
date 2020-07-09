@@ -19,16 +19,6 @@ class Recipes {
   }
 
   filterByIngredient(ingredientName) {
-    // const ingredientList = this.recipes.filter(recipe => {
-    //   return recipe.getIngredientNameList();
-    // }); // this will return names of all ingredients in all recipes
-
-    // return this.recipes.filter( recipe => {
-    //   if (ingredientList.includes(ingredientName)) {
-    //     return recipe;
-    //   }
-    // });
-
     const ingredientNeeded = fullIngredientsList.find( ingredient => {
       return ingredient.name === ingredientName;
     });
@@ -44,10 +34,9 @@ class Recipes {
     });
 
     return recipeArray;
-    // we want to return all recipes that contain ingredient being searched for
-    // User inputs item they're looking for
-    // Names aren't in recipes, need to look through ingredients list for names
-    // Once we have names, return recipes they're in
+    // search by only part of ingredient name?
+    // return messages for no recipe has that ingredient?
+    // return message for invalid ingredient (numbers/symbols/blank)
   }
 }
 
