@@ -63,20 +63,20 @@ describe('Recipes', function () {
     expect(filteredIds).to.deep.equal(recipeIds);
   });
 
-  it('should be able to return a message if no recipe has that ingredient', function () {
+  it('should be able to return an empty array if no recipe has that ingredient', function () {
     let noIngredient = recipes.filterByIngredient('rhubarb');
 
-    expect(noIngredient).to.equal('No recipe has that ingredient');
+    expect(noIngredient).to.deep.equal([]);
   });
 
-  it('should be able to return a message if it\'s an invalid ingredient', function () {
-    let noIngredient1 = recipes.filteredByIngredient('12');
-    expect(noIngredient1).to.equal('Please enter a valid ingredient');
+  it('should be able to return an empty array if it\'s an invalid ingredient', function () {
+    let noIngredient1 = recipes.filterByIngredient('12');
+    expect(noIngredient1).to.deep.equal([]);
 
-    let noIngredient2 = recipes.filteredByIngredient('*');
-    expect(noIngredient2).to.equal('Please enter a valid ingredient');
+    let noIngredient2 = recipes.filterByIngredient('*');
+    expect(noIngredient2).to.deep.equal([]);
 
-    let noIngredient3 = recipes.filteredByIngredient('  ');
-    expect(noIngredient3).to.equal('Please enter a valid ingredient');
+    let noIngredient3 = recipes.filterByIngredient('  ');
+    expect(noIngredient3).to.deep.equal([]);
   });
 });
