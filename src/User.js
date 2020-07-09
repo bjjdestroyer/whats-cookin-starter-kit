@@ -19,8 +19,10 @@ class User {
     }
   }
 
-  addToRecipesToCook (recipe) {
-    this.recipesToCook.push(recipe);
+  addToRecipesToCook(recipe) {
+    if(!(this.recipesToCook.includes(recipe))){
+      this.recipesToCook.push(recipe);
+    }
   }
 
   filterRecipes(recipesToFilter, tag) {
