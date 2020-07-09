@@ -8,8 +8,8 @@ const recipes = require('../data/recipes');
 describe('Recipe', function () {
   let recipe;
 
-  beforeEach(function () {
-    recipe = new Recipe();
+  beforeEach(function() {
+    recipe = new Recipe(recipes[0]);
   });
 
   it('should be a function', function () {
@@ -36,13 +36,12 @@ describe('Recipe', function () {
   });
 
   it('should be able to calculate recipe cost', function () {
-    const recipeCost = recipe.getTotalIngredientCost(595736);
-
-    expect(recipeCost).to.equal(18084.5);
+    const recipeCost = recipe.getTotalIngredientCost();
+    expect(recipeCost).to.equal(17776);
   });  
 
   it('should calculate recipe cost for only one recipe', function () {
-    const recipeCost = recipe.getTotalIngredientCost(595736, 678353);
+    const recipeCost = recipe.getTotalIngredientCost();
 
     expect(recipe).to.equal(18084.5);
     //or return undefined/message?
@@ -50,7 +49,6 @@ describe('Recipe', function () {
 
   it('should be able to list recipe instructions', function () {
     const recipeInstructions = recipe.returnRecipeInstructions();
-
     expect(recipeInstructions).to.equal(Recipe);
   });  
 });
