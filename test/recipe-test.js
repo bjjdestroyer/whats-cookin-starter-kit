@@ -20,6 +20,21 @@ describe('Recipe', function () {
     expect(recipe).to.be.an.instanceOf(Recipe);
   });
 
+  it('should be able to get the price of an ingredient', function () {
+    let ingredientPrice = recipe.getIngredientPrice(2047);
+
+    expect(ingredientPrice).to.equal(280);
+  });
+
+  it('should be able to return a list of ingredients', function () {
+    let ingredientList = recipe.getIngredientNameList();
+    let ingredients = ["wheat flour", "blanched almond flour", "egg yolks", "salt","sesame seeds", "sucrose", "unsalted butter"]
+
+    // recipe.id === 541288
+
+    expect(ingredientList).to.equal(ingredients);
+  });
+
   it('should be able to calculate recipe cost', function () {
     const recipeCost = recipe.getTotalIngredientCost(595736);
 
