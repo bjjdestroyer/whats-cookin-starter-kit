@@ -10,7 +10,7 @@ describe('Pantry', function() {
   let pantry;
 
   beforeEach(function() {
-    pantry = new Pantry(users[0].pantry); 
+    pantry = new Pantry(users[0].pantry);
   })
 
   it('should be a function', function() {
@@ -22,7 +22,7 @@ describe('Pantry', function() {
   })
 
   it('should contain an array of ingredients', function() {
-    expect(pantry.contents[3].ingredient).to.equal(1082047);
+    expect(pantry.contents[2].ingredient).to.equal(1082047);
   })
 
   it('should be able to determine if it has enough ingredients for a given recipe', function() {
@@ -39,6 +39,6 @@ describe('Pantry', function() {
 
   // it('should be able to remove ingredients from a cooked meal', function() {
   //   let testRecipe = recipes[0];
-    
+
   // })
 })
