@@ -58,7 +58,7 @@ describe('Recipes', function () {
   it('should be able to find all recipes that have the same word in it', function () {
     const filteredByIngredient = recipes.filterByIngredient("soda");
     const filteredIds = filteredByIngredient.map(recipe => recipe.id);
-    const recipeIds = [595736, 623855, 611858, 583738, 602311];
+    const recipeIds = [595736, 623855, 602311, 611858, 583738];
     
     expect(filteredIds).to.deep.equal(recipeIds);
   });
