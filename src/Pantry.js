@@ -1,3 +1,5 @@
+const allIngredients = require('../data/ingredients');
+
 class Pantry {
   constructor() {
     this.contents = [];
@@ -17,7 +19,7 @@ class Pantry {
   }
 
   findMissingIngredients(recipe) {
-    let ingredientsNeeded = this.checkForIngredients();
+    let ingredientsNeeded = this.canMakeRecipe();
     let ingredientsKeys = Object.keys(ingredientsNeeded);
 
     ingredientsKeys.reduce((shoppingList, ingredient) => {
