@@ -39,6 +39,6 @@ describe('Recipe', function () {
 
   it('should be able to list recipe instructions', function () {
     const recipeInstructions = recipe.returnRecipeInstructions();
-    expect(recipeInstructions).to.equal(Recipe);
+    expect(recipeInstructions).to.equal(recipe.instructions);
   });
 });
