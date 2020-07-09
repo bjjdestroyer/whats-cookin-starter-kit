@@ -26,42 +26,40 @@ describe('Recipes', function () {
 
   it('should be able to filter recipes by tag', function () {
     const filteredByTag = recipes.filterByTag("sauce");
-    //return id's at this point?
+   
     expect(filteredByTag).to.deep.equal(allRecipes[2].id);
   });
 
   it('should be able to filter and return multiple recipes by tag', function () {
     const filteredByTag = recipes.filterByTag("salad");
+    const filteredIds = filteredByTag.map(recipe => recipe.id);
     const recipeIds = [793584, 999044, 576906, 799732]
-    // check out array order
-    //return id's at this point?
-    expect(filteredByTag).to.deep.equal(recipeIds);
+    
+    expect(filteredIds).to.deep.equal(recipeIds);
   });
 
   it('should be able to filter recipes with no tag', function () {
     const filteredByTag = recipes.filterByTag();
+    const filteredIds = filteredByTag.map(recipe => recipe.id);
     const recipeID = [562334];
-    //return id's at this point?
-    // or have the return equal index of recipes data?
-    expect(filteredByTag).to.deep.equal(recipeID);
+    
+    expect(filteredIds).to.deep.equal(recipeID);
   });
 
   it('should be able to find recipes by ingredient', function () {
     const filteredByIngredient = recipes.filterByIngredient("bicarbonate of soda");
+    const filteredIds = filteredByIngredient.map(recipe => recipe.id);
     const recipeIds = [595736, 623855, 611858, 583738];
-    //return id's at this point?
-    // or have the return equal index of recipes data?
 
-    expect(filteredByIngredient).to.deep.equal(recipeIds);
+    expect(filteredIds).to.deep.equal(recipeIds);
   });
 
   it('should be able to find all recipes that have the same word in it', function () {
     const filteredByIngredient = recipes.filterByIngredient("soda");
+    const filteredIds = filteredByIngredient.map(recipe => recipe.id);
     const recipeIds = [595736, 623855, 611858, 583738, 602311];
-    //return id's at this point?
-    // or have the return equal index of recipes data?
-
-    expect(filteredByIngredient).to.deep.equal(recipeIds);
+    
+    expect(filteredIds).to.deep.equal(recipeIds);
   });
 
   it('should be able to return a message if no recipe has that ingredient', function () {
@@ -71,13 +69,13 @@ describe('Recipes', function () {
   });
 
   it('should be able to return a message if it\'s an invalid ingredient', function () {
-    let noIngredient = recipes.filteredByIngredient('12');
-    expect(noIngredient).to.equal('Please enter a valid ingredient');
+    let noIngredient1 = recipes.filteredByIngredient('12');
+    expect(noIngredient1).to.equal('Please enter a valid ingredient');
 
-    noIngredient = recipes.filteredByIngredient('*');
-    expect(noIngredient).to.equal('Please enter a valid ingredient');
+    let noIngredient2 = recipes.filteredByIngredient('*');
+    expect(noIngredient2).to.equal('Please enter a valid ingredient');
 
-    noIngredient = recipes.filteredByIngredient('  ');
-    expect(noIngredient).to.equal('Please enter a valid ingredient');
+    let noIngredient3 = recipes.filteredByIngredient('  ');
+    expect(noIngredient3).to.equal('Please enter a valid ingredient');
   });
 });
