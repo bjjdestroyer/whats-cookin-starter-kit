@@ -22,21 +22,22 @@ class Recipes {
     const ingredientNeeded = fullIngredientsList.find( ingredient => {
       return ingredient.name === ingredientName;
     });
+    console.log(ingredientNeeded);
 
     let recipeArray = []
 
-    const recipes = this.recipes.forEach( recipe => {
+    this.recipes.forEach( recipe => {
       recipe.ingredients.forEach( ingredient => {
-        if (ingredient.id === ingredientNeeded.id) {
+        if (ingredientNeeded === undefined) {
+          return 'No recipe has that ingredient';
+        } else if (ingredient.id === ingredientNeeded.id) {
           recipeArray.push(recipe);
-        };
+        }
       });
     });
 
     return recipeArray;
     // search by only part of ingredient name?
-    // return messages for no recipe has that ingredient?
-    // return message for invalid ingredient (numbers/symbols/blank)
   }
 }
 
