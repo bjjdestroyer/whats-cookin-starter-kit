@@ -1,4 +1,5 @@
 const fullIngredientsList = require('../data/ingredients');
+const { forEach } = require('../data/users');
 
 class Recipe {
   constructor(recipe) {
@@ -22,7 +23,16 @@ class Recipe {
   }
 
   getIngredientNameList() {
-    return this.ingredients.map(ingredient => ingredient.name);
+    let ingredientIds = this.ingredients.map(ingredient => {
+      return ingredient.name;
+    });
+    return ingredientIds.map(id => {
+      fullIngredientsList.forEach(ingredient => {
+        if (ingredient.id === id) {
+          return ingredient.name;
+        }
+      })
+    })
   }
 
   getTotalIngredientCost() {
