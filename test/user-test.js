@@ -42,71 +42,71 @@ describe('User', function() {
 
   it('should be able to favorite a recipe', function() {
     const recipe = recipes[0];
-    user.addRecipeToFavorites(recipe);
+    user.addToFavorites(recipe);
     expect(user.favoriteRecipes[0]).to.deep.equal(recipe);
   });
 
   it('should only be able to add a recipe once', function() {
     const recipe = recipes[0];
-    user.addRecipeToFavorites(recipe);
-    user.addRecipeToFavorites(recipe);
-    user.addRecipeToFavorites(recipe);
+    user.addToFavorites(recipe);
+    user.addToFavorites(recipe);
+    user.addToFavorites(recipe);
     expect(user.favoriteRecipes.length).to.equal(1);
   });
 
   it('should be able to add a recipe to a recipe planner', function() {
     const recipe = recipes[0];
-    user.saveRecipeForLater();
+    user.addToRecipesToCook();
     expect(user.mealsToCook[0]).to.deep.equal(recipe);
   });
 
   it('should only be able to add a recipe once to recipe planner', function () {
     const recipe = recipes[0];
-    user.saveRecipeForLater(recipe);
-    user.saveRecipeForLater(recipe);
-    user.saveRecipeForLater(recipe);
+    user.addToRecipesToCook(recipe);
+    user.addToRecipesToCook(recipe);
+    user.addToRecipesToCook(recipe);
     expect(user.favoriteRecipes.length).to.equal(1);
   });
 
-  //it('should be able to filter recipes by tag', function () {
-    const recipe = recipes[0];
-    user.saveRecipeForLater();
-    expect(user.mealsToCook[0]).to.deep.equal(recipe);
-  });
+//   //it('should be able to filter recipes by tag', function () {
+//     const recipe = recipes[0];
+//     user.addToRecipeToCook();
+//     expect(user.mealsToCook[0]).to.deep.equal(recipe);
+//   });
 
-  //it('should be able to search for recipes', function () {
-    const recipe = recipes[0];
-    user.saveRecipeForLater();
-    expect(user.mealsToCook[0]).to.deep.equal(recipe);
-  });
+//   //it('should be able to search for recipes', function () {
+//     const recipe = recipes[0];
+//     user.addToRecipeToCook();
+//     expect(user.mealsToCook[0]).to.deep.equal(recipe);
+//   });
 
-  //it('should be able to search for recipes by ingredient', function () {
-    const recipe = recipes[0];
-    user.saveRecipeForLater();
-    expect(user.mealsToCook[0]).to.deep.equal(recipe);
-  });
+//   //it('should be able to search for recipes by ingredient', function () {
+//     const recipe = recipes[0];
+//     user.addToRecipeToCook();
+//     expect(user.mealsToCook[0]).to.deep.equal(recipe);
+//   });
 
-  //it('should be able to return message for invalid search', function () {
-    const recipe = recipes[0];
-    user.saveRecipeForLater();
-    expect(user.mealsToCook[0]).to.deep.equal(recipe);
-  });
+//   //it('should be able to return message for invalid search', function () {
+//     const recipe = recipes[0];
+//     user.addToRecipeToCook();
+//     expect(user.mealsToCook[0]).to.deep.equal(recipe);
+//   });
 
-  //it('should be able to search pantry for recipe ingredients', function () {
-    const recipe = recipes[0];
-    user.saveRecipeForLater();
-    expect(user.mealsToCook[0]).to.deep.equal(recipe);
-  });
+//   //it('should be able to search pantry for recipe ingredients', function () {
+//     const recipe = recipes[0];
+//     user.addToRecipeToCook();
+//     expect(user.mealsToCook[0]).to.deep.equal(recipe);
+//   });
 
-  it('should be able to check the pantry for sufficient ingredients for a saved recipe', function() {
-    const recipe = recipes[0];
-    let pantryMessage;// = Have user use pantry methods to evaluate
-    expect(pantryMessage).to.equal("You do not currently have sufficient ingredients to cook this recipe.");
-  });
+//   it('should be able to check the pantry for sufficient ingredients for a saved recipe', function() {
+//     const recipe = recipes[0];
+//     let pantryMessage;// = Have user use pantry methods to evaluate
+//     expect(pantryMessage).to.equal("You do not currently have sufficient ingredients to cook this recipe.");
+//   });
 
-  //it('should be able to return a message with ingredients needed and cost', function () {
-    const recipe = recipes[0];
-    let pantryMessage;// = Have user use pantry methods to evaluate
-    expect(pantryMessage).to.equal("You do not currently have sufficient ingredients to cook this recipe.");
-  });
+//   //it('should be able to return a message with ingredients needed and cost', function () {
+//     const recipe = recipes[0];
+//     let pantryMessage;// = Have user use pantry methods to evaluate
+//     expect(pantryMessage).to.equal("You do not currently have sufficient ingredients to cook this recipe.");
+//   });
 })
