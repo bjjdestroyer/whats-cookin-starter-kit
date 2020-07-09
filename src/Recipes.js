@@ -44,9 +44,6 @@ class Recipes {
     });
 
     return recipeArray;
-    // search by only part of ingredient name?
-    // if (ingredientName !== typeof String || ingredientName === "") {
-    // return;
   }
 }
 
