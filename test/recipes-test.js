@@ -9,7 +9,7 @@ describe('Recipes', function () {
   let recipes;
 
   beforeEach(function () {
-    recipes = new Recipes();
+    recipes = new Recipes(allRecipes);
   });
 
   it('should be a function', function () {
@@ -21,26 +21,27 @@ describe('Recipes', function () {
   });
 
   it('should have an array of recipes', function () {
-    expect(recipes.allRecipes).to.deep.equal(allRecipes);
+    expect(recipes.recipes).to.deep.equal(allRecipes);
   });
 
   it('should be able to filter recipes by tag', function () {
     const filteredByTag = recipes.filterByTag("sauce");
-   
-    expect(filteredByTag).to.deep.equal(allRecipes[2].id);
+    const filteredId = filteredByTag[0].id;
+    
+    expect(filteredId).to.deep.equal(allRecipes[2].id);
   });
 
   it('should be able to filter and return multiple recipes by tag', function () {
     const filteredByTag = recipes.filterByTag("salad");
-    const filteredIds = filteredByTag.map(recipe => recipe.id);
+    const filteredIds = [filteredByTag[0].id, filteredByTag[1].id, filteredByTag[2].id, filteredByTag[3].id,]
     const recipeIds = [793584, 999044, 576906, 799732]
     
     expect(filteredIds).to.deep.equal(recipeIds);
   });
 
   it('should be able to filter recipes with no tag', function () {
-    const filteredByTag = recipes.filterByTag();
-    const filteredIds = filteredByTag.map(recipe => recipe.id);
+    const filteredByTag = recipes.filterByTag("");
+    const filteredIds = [filteredByTag[0].id];
     const recipeID = [562334];
     
     expect(filteredIds).to.deep.equal(recipeID);
@@ -48,7 +49,7 @@ describe('Recipes', function () {
 
   it('should be able to find recipes by ingredient', function () {
     const filteredByIngredient = recipes.filterByIngredient("bicarbonate of soda");
-    const filteredIds = filteredByIngredient.map(recipe => recipe.id);
+    const filteredIds = [filteredByIngredient[0].id, filteredByIngredient[1].id, filteredByIngredient[2].id, filteredByIngredient[3].id,]
     const recipeIds = [595736, 623855, 611858, 583738];
 
     expect(filteredIds).to.deep.equal(recipeIds);
