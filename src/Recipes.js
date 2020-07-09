@@ -19,25 +19,34 @@ class Recipes {
   }
 
   filterByIngredient(ingredientName) {
-    const ingredientNeeded = fullIngredientsList.find( ingredient => {
-      return ingredient.name === ingredientName;
+    const ingredientNeeded = fullIngredientsList.filter( ingredient => {
+      let newIngredient = ingredient.name;
+      if (newIngredient === undefined) {
+        return;
+      } else if (newIngredient.includes(ingredientName)) {
+        return ingredient;
+      }
     });
-    console.log(ingredientNeeded);
 
     let recipeArray = []
 
     this.recipes.forEach( recipe => {
       recipe.ingredients.forEach( ingredient => {
-        if (ingredientNeeded === undefined) {
-          return 'No recipe has that ingredient';
-        } else if (ingredient.id === ingredientNeeded.id) {
-          recipeArray.push(recipe);
-        }
+        if (ingredientNeeded === []) {
+          return;
+        } 
+        ingredientNeeded.forEach(needIngredient => {
+          if (ingredient.id === needIngredient.id) {
+            recipeArray.push(recipe);
+          }
+        })
       });
     });
 
     return recipeArray;
     // search by only part of ingredient name?
+    // if (ingredientName !== typeof String || ingredientName === "") {
+    // return;
   }
 }
 
