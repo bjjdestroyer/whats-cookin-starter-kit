@@ -14,12 +14,14 @@ class User {
   }
 
   addToFavorites(recipe) {
-    this.favoriteRecipes.push(recipe);
+    if (!(this.favoriteRecipes.includes(recipe))) {
+      this.favoriteRecipes.push(recipe);
+    }
   }
 
   addToRecipesToCook (recipe) {
     this.recipesToCook.push(recipe);
-  } 
+  }
 
   filterRecipes(recipesToFilter, tag) {
     return recipesToFilter.filter(recipe => recipe.tags.includes(tag));
@@ -49,7 +51,7 @@ class User {
 
   checkForIngredients(recipe) {
     // Checking to see if you have the right amount of ingredients for a recipe
-    // use reduce on recipe.ingredients array; acc is neededList, cv is 
+    // use reduce on recipe.ingredients array; acc is neededList, cv is
     // ingredient. Iterate over pantry contents with forEach. If ingredient
     // matches pantry ingredient, compare amounts and return
     // if pantry doesn't include the ingredient, return recipe ingredient
@@ -92,7 +94,7 @@ class User {
     // return new object with keys and values of amountNeeded and cost
 
 
-    
+
 
   }
 }
