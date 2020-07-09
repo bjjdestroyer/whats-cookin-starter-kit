@@ -5,11 +5,11 @@ class Recipes {
     this.recipes = recipes;
   }
 
-  filterRecipesByTag(tag) {
+  filterByTag(tag) {
     return this.recipes.filter(recipe => recipe.tags.includes(tag));
   }
 
-  filterRecipesByIngredient(ingredientName) {
+  filterByIngredient(ingredientName) {
     return this.recipes.filter(recipe => recipe.getIngredientNameList().includes(ingredientName));
   }
 }

@@ -65,19 +65,19 @@ describe('Recipes', function () {
   });
 
   it('should be able to return a message if no recipe has that ingredient', function () {
-    let noIngredient = recipes.filteredByIngredient('rhubarb');
+    let noIngredient = recipes.filterByIngredient('rhubarb');
 
     expect(noIngredient).to.equal('No recipe has that ingredient');
   });
 
   it('should be able to return a message if it\'s an invalid ingredient', function () {
-    let noIngredient = recipes.filteredByIngredient('12');
+    let noIngredient = recipes.filterByIngredient('12');
     expect(noIngredient).to.equal('Please enter a valid ingredient');
 
-    noIngredient = recipes.filteredByIngredient('*');
+    noIngredient = recipes.filterByIngredient('*');
     expect(noIngredient).to.equal('Please enter a valid ingredient');
 
-    noIngredient = recipes.filteredByIngredient('  ');
+    noIngredient = recipes.filterByIngredient('  ');
     expect(noIngredient).to.equal('Please enter a valid ingredient');
   });
 });
