@@ -8,8 +8,8 @@ const recipes = require('../data/recipes');
 describe('Recipe', function () {
   let recipe;
 
-  beforeEach(function () {
-    recipe = new Recipe();
+  beforeEach(function() {
+    recipe = new Recipe(recipes[0].id, recipes[0].ingredients, recipes[0].instructions, recipes[0].name, recipes[0].tags);
   });
 
   it('should be a function', function () {
