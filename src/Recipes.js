@@ -1,8 +1,10 @@
+const fullIngredientsList = require('../data/ingredients');
+const allRecipes = require('../data/recipes');
 const Recipe = require('./Recipe');
 
 class Recipes {
-  constructor(recipes) {
-    this.recipes = recipes;
+  constructor() {
+    this.recipes = allRecipes;
   }
 
   filterByTag(tag) {
@@ -17,7 +19,31 @@ class Recipes {
   }
 
   filterByIngredient(ingredientName) {
-    return this.recipes.filter(recipe => recipe.getIngredientNameList().includes(ingredientName));
+    const ingredientNeeded = fullIngredientsList.filter( ingredient => {
+      let newIngredient = ingredient.name;
+      if (newIngredient === undefined) {
+        return;
+      } else if (newIngredient.includes(ingredientName)) {
+        return ingredient;
+      }
+    });
+
+    let recipeArray = []
+
+    this.recipes.forEach( recipe => {
+      recipe.ingredients.forEach( ingredient => {
+        if (ingredientNeeded === []) {
+          return;
+        } 
+        ingredientNeeded.forEach(needIngredient => {
+          if (ingredient.id === needIngredient.id) {
+            recipeArray.push(recipe);
+          }
+        })
+      });
+    });
+
+    return recipeArray;
   }
 }
 
