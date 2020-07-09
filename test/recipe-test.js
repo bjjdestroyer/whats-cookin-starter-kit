@@ -28,27 +28,17 @@ describe('Recipe', function () {
 
   it('should be able to return a list of ingredients', function () {
     let ingredientList = recipe.getIngredientNameList();
-    let ingredients = ["wheat flour", "blanched almond flour", "egg yolks", "salt","sesame seeds", "sucrose", "unsalted butter"]
-
-    // recipe.id === 541288
-
-    expect(ingredientList).to.equal(ingredients);
+    let ingredients = ["wheat flour", "bicarbonate of soda", "eggs", "sucrose", "instant vanilla pudding", "brown sugar", "salt", "fine sea salt", "semi sweet chips", "unsalted butter", "vanilla"]
+    expect(ingredientList).to.deep.equal(ingredients);
   });
 
   it('should be able to calculate recipe cost', function () {
     const recipeCost = recipe.getTotalIngredientCost();
     expect(recipeCost).to.equal(17776);
-  });  
-
-  it('should calculate recipe cost for only one recipe', function () {
-    const recipeCost = recipe.getTotalIngredientCost();
-
-    expect(recipe).to.equal(18084.5);
-    //or return undefined/message?
-  });  
+  });
 
   it('should be able to list recipe instructions', function () {
     const recipeInstructions = recipe.returnRecipeInstructions();
     expect(recipeInstructions).to.equal(Recipe);
-  });  
+  });
 });
