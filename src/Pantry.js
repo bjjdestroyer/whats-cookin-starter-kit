@@ -5,54 +5,52 @@ class Pantry {
     this.contents = contents;
   }
 
-  canMakeRecipe(recipe) {
+  findingNeededIngredients(recipe) {
     let neededIngredients = {};
     recipe.ingredients.forEach(ingredient => {
       neededIngredients[ingredient.id] = ingredient.quantity.amount;
-    })
-    this.contents.forEach(ingredient => {
+    });
+    return neededIngredients;
+  };
+
+  addingNeededIngredients(neededIngredients) {
+    return this.contents.forEach(ingredient => {
       if (Object.keys(neededIngredients).includes(ingredient.ingredient.toString())) {
         neededIngredients[ingredient.ingredient] -= ingredient.amount;
       }
-    })
+    });
+  };
+
+  canMakeRecipe(recipe) {
+    let neededIngredients = this.findingNeededIngredients(recipe);
+
+    this.addingNeededIngredients(neededIngredients);
+
     const validationArray = Object.values(neededIngredients).map(amount => {
       return amount < 0;
-    })
+    });
+
     if (validationArray.includes(false)) {
       return "You do not have sufficient ingredients for this recipe.";
     } else {
       return "You have enough ingredients for this recipe!"
     }
-    // return recipe.ingredients.reduce((neededList, ingredient) => {
-    //   console.log(neededList);
-    //   return neededList[ingredient.id] = this.contents.forEach(pantryIngredient => {
-    //     if (this.contents.includes(ingredient)) {
-    //       return ingredient.amount - pantryIngredient.amount;
-    //     } else if (this.contents.includes(!ingredient)) {
-    //       return ingredient.amount;
-    //     }
-    //   })
-  }
+  };
 
   findMissingIngredients(recipe) {
-    let ingredientsNeeded = this.canMakeRecipe();
-    let ingredientsKeys = Object.keys(ingredientsNeeded);
+    let ingredientsNeeded = this.findingNeededIngredients(recipe);
+    this.addingNeededIngredients(ingredientsNeeded);
+    
+    let ingredientsToBuy = {};
 
-    ingredientsKeys.reduce((shoppingList, ingredient) => {
-      let ingredientInArray = allIngredients.find(ingredient => {
-        allIngredients.name === ingredient;
-      });
-
-      if (!shoppingList[ingredient]) {
-        shoppingList[ingredient] = 0;
-        shoppingList[ingredient].amount = ingredientsNeeded[ingredient];
-        shoppingList[ingredient].cost = ingredientsNeeded[ingredient] * ingredientInArray.estimatedCostInCents;
-      } else {
-        shoppingList[ingredient].amount = ingredientsNeeded[ingredient];
-        shoppingList[ingredient].cost = ingredientsNeeded[ingredient] * ingredientInArray.estimatedCostInCents;
+    Object.entries(ingredientsNeeded).forEach(([id, amount]) => {
+      if (amount > 0) {
+        ingredientsToBuy[id] = amount;
       }
-    }, {})
-  }
+    });
+    
+    return ingredientsToBuy;
+  };
 }
 
 module.exports = Pantry;
