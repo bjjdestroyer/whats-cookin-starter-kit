@@ -1,8 +1,8 @@
-const users = require('../data/users');
-const allIngredients = require('../data/ingredients');
-const Pantry = require('./Pantry');
-const Recipe = require('./Recipe');
-const Recipes = require('./Recipes');
+// const users = require('../data/users');
+// const allIngredients = require('../data/ingredients');
+// const Pantry = require('./Pantry');
+// const Recipe = require('./Recipe');
+// const Recipes = require('./Recipes');
 
 class User {
   constructor(userObj) {
@@ -100,5 +100,6 @@ class User {
 
   }
 }
-
-module.exports = User;
+if(typeof(module) !== 'undefined') {
+  module.exports = User;
+}
