@@ -1,0 +1,34 @@
+body {
+  background-color: bisque;
+  margin: 5%;
+}
+
+.title {
+  text-align: center;
+}
+
+.top-bar {
+  
+}
+
+.recipes {
+  display: flex;
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.card {
+  border-style: dashed;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card-btn {
+  
+}
+
+.favorite {
+  
+}
+
