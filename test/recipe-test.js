@@ -32,6 +32,13 @@ describe('Recipe', function () {
     expect(ingredientList).to.deep.equal(ingredients);
   });
 
+  it('should still return a list of ingredients even after an undefined ingredient in the data', function() {
+    recipe = new Recipe(recipes[31]);
+    let ingredientList = recipe.getIngredientNameList();
+    let ingredients = ["balsamic glaze", "butter", "fruit loops", "marshmallow", "full-fat milk", "powdered sugar", "sucrose"]
+    expect(ingredientList).to.deep.equal(ingredients);
+  });
+
   it('should be able to calculate recipe cost', function () {
     const recipeCost = recipe.getTotalIngredientCost();
     expect(recipeCost).to.equal(17776);
