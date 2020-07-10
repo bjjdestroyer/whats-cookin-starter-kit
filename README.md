@@ -23,6 +23,11 @@ Talk about what the project was like; issues, stopping points, where we excelled
 - Taryn Martin @bjjdestroyer
 - Ben McClung @aurumvalian
 
+### Attributions:
+- Heart, cooking pot, and pantry icons made by Freepik from www.flaticon.com
+- Menu icon made by iconixar from www.flaticon.com
+- Arrow icons made by Darius Dan from www.flaticon.com
+
 ## Linting Your Code 
 
 Run the command in your terminal npm run lint to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
