@@ -49,4 +49,6 @@ class Pantry {
   };
 }
 
-module.exports = Pantry;
+if(typeof(module) !== 'undefined') {
+  module.exports = Pantry;
+}

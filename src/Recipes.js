@@ -1,10 +1,10 @@
-const fullIngredientsList = require('../data/ingredients');
-const allRecipes = require('../data/recipes');
-const Recipe = require('./Recipe');
+// const fullIngredientsList = require('../data/ingredients');
+// const allRecipes = require('../data/recipes');
+// const Recipe = require('./Recipe');
 
 class Recipes {
   constructor() {
-    this.recipes = allRecipes;
+    this.recipes = recipeData;
   }
 
   filterByTag(tag) {
@@ -47,4 +47,6 @@ class Recipes {
   }
 }
 
-module.exports = Recipes;
+if(typeof(module) !== 'undefined') {
+  module.exports = Recipes;
+}

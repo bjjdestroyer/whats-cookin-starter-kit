@@ -1,5 +1,5 @@
-const fullIngredientsList = require('../data/ingredients');
-const { forEach } = require('../data/users');
+// const fullIngredientsList = require('../data/ingredients');
+// const { forEach } = require('../data/users');
 
 class Recipe {
   constructor(recipe) {
@@ -46,4 +46,6 @@ class Recipe {
   }
 }
 
-module.exports = Recipe;
+if(typeof(module) !== 'undefined') {
+  module.exports = Recipe;
+}
