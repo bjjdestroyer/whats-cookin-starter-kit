@@ -34,7 +34,7 @@ class Recipes {
       recipe.ingredients.forEach( ingredient => {
         if (ingredientNeeded === []) {
           return;
-        } 
+        }
         ingredientNeeded.forEach(needIngredient => {
           if (ingredient.id === needIngredient.id) {
             recipeArray.push(recipe);

@@ -79,9 +79,4 @@ describe('Recipes', function () {
     let noIngredient3 = recipes.filterByIngredient('  ');
     expect(noIngredient3).to.deep.equal([]);
   });
-
-  it('should log filterByIngredient', function() {
-    console.log(recipes.filterByIngredient('balsamic glaze'));
-    expect(true).to.equal(true);
-  })
 });
