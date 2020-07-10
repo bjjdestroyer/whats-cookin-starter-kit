@@ -27,7 +27,7 @@ describe('Recipes', function () {
   it('should be able to filter recipes by tag', function () {
     const filteredByTag = recipes.filterByTag("sauce");
     const filteredId = filteredByTag[0].id;
-    
+
     expect(filteredId).to.deep.equal(allRecipes[2].id);
   });
 
@@ -35,7 +35,7 @@ describe('Recipes', function () {
     const filteredByTag = recipes.filterByTag("salad");
     const filteredIds = [filteredByTag[0].id, filteredByTag[1].id, filteredByTag[2].id, filteredByTag[3].id,]
     const recipeIds = [793584, 999044, 576906, 799732]
-    
+
     expect(filteredIds).to.deep.equal(recipeIds);
   });
 
@@ -43,7 +43,7 @@ describe('Recipes', function () {
     const filteredByTag = recipes.filterByTag("");
     const filteredIds = [filteredByTag[0].id];
     const recipeID = [562334];
-    
+
     expect(filteredIds).to.deep.equal(recipeID);
   });
 
@@ -59,7 +59,7 @@ describe('Recipes', function () {
     const filteredByIngredient = recipes.filterByIngredient("soda");
     const filteredIds = filteredByIngredient.map(recipe => recipe.id);
     const recipeIds = [595736, 623855, 602311, 611858, 583738];
-    
+
     expect(filteredIds).to.deep.equal(recipeIds);
   });
 
@@ -79,4 +79,9 @@ describe('Recipes', function () {
     let noIngredient3 = recipes.filterByIngredient('  ');
     expect(noIngredient3).to.deep.equal([]);
   });
+
+  it('should log filterByIngredient', function() {
+    console.log(recipes.filterByIngredient('balsamic glaze'));
+    expect(true).to.equal(true);
+  })
 });

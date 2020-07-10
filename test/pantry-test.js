@@ -31,11 +31,38 @@ describe('Pantry', function() {
     expect(response).to.equal("You do not have sufficient ingredients for this recipe.");
   })
 
+  it('should still run on an empty pantry', function() {
+    pantry = new Pantry(users[21].pantry);
+    let testRecipe = recipes[0];
+    let response = pantry.canMakeRecipe(testRecipe);
+    expect(response).to.equal("You do not have sufficient ingredients for this recipe.");
+  })
+
   it('should return how much of each ingredient still needed', function() {
     let testRecipe = recipes[0];
     let missingIngredients = pantry.findMissingIngredients(testRecipe);
     expect(missingIngredients).to.deep.equal({"19206": 1, "19334": 0.5, "1012047": 24, 10019903: 2});
   })
+
+  it('should still return how much of each ingredient needed if pantry is empty', function() {
+    pantry = new Pantry(users[21].pantry);
+    let testRecipe = recipes[0];
+    let missingIngredients = pantry.findMissingIngredients(testRecipe);
+    expect(missingIngredients).to.deep.equal({
+      "20081":  1.5,
+      "18372":  0.5,
+      "1123": 1,
+      "19335": 0.5,
+      "19206": 3,
+      "19334": 0.5,
+      "2047": 0.5,
+      "1012047": 24,
+      "10019903": 2,
+      "1145": 0.5,
+      "2050": 0.5
+    })
+  })
+
 
   // it('should be able to remove ingredients from a cooked meal', function() {
   //   let testRecipe = recipes[0];

@@ -1,4 +1,4 @@
-const allIngredients = require('../data/ingredients');
+// const allIngredients = require('../data/ingredients');
 
 class Pantry {
   constructor(contents) {
@@ -23,13 +23,10 @@ class Pantry {
 
   canMakeRecipe(recipe) {
     let neededIngredients = this.findingNeededIngredients(recipe);
-
     this.addingNeededIngredients(neededIngredients);
-
     const validationArray = Object.values(neededIngredients).map(amount => {
       return amount < 0;
     });
-
     if (validationArray.includes(false)) {
       return "You do not have sufficient ingredients for this recipe.";
     } else {
@@ -40,7 +37,6 @@ class Pantry {
   findMissingIngredients(recipe) {
     let ingredientsNeeded = this.findingNeededIngredients(recipe);
     this.addingNeededIngredients(ingredientsNeeded);
-    
     let ingredientsToBuy = {};
 
     Object.entries(ingredientsNeeded).forEach(([id, amount]) => {
@@ -48,7 +44,7 @@ class Pantry {
         ingredientsToBuy[id] = amount;
       }
     });
-    
+
     return ingredientsToBuy;
   };
 }
