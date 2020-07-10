@@ -7,51 +7,51 @@
   </head>
   <body>
     <header>
-      <h1>What's Cookin'?</h1>
+      <h1 class="title">What's Cookin'?</h1>
       <section class="search-bar">
         <input>
-        <button class="favorites-list">Favorites</button>
-        <button class="to-cook-list">Recipes To Cook</button>
-        <button class="pantry">Your Pantry</button>
-        <button class="shopping-list">Shopping List</button>
-        <h3 class="user-name">Hi User!</h3>
+        <button class="favorites-list top-bar">Favorites</button>
+        <button class="to-cook-list top-bar">Recipes To Cook</button>
+        <button class="pantry top-bar">Your Pantry</button>
+        <button class="shopping-list top-bar">Shopping List</button>
+        <h3 class="user-name top-bar">Hi User!</h3>
       </section>
     </header>
     <main>
-      <div>
-        <section>
-          <button class="to-cook"></button>
-          <button class="favorite"></button>
+      <div class="recipes">
+        <section class="recipe-1 card">
+          <button class="to-cook card-btn">Cook</button>
+          <button class="favorite card-btn">Fav</button>
           <img class="recipe-img">
           <h3 class="recipe-title"></h3>
           <p class="tags"></p>
         </section>
-        <section>
-          <button class="to-cook"></button>
-          <button class="favorite"></button>
+        <section class="recipe-2 card">
+          <button class="to-cook card-btn">Cook</button>
+          <button class="favorite card-btn">Fav</button>
           <img class="recipe-img">
           <h3 class="recipe-title"></h3>
           <p class="tags"></p>
         </section>
-        <section>
-          <button class="to-cook"></button>
-          <button class="favorite"></button>
+        <section class="recipe-3 card">
+          <button class="to-cook card-btn">Cook</button>
+          <button class="favorite card-btn">Fav</button>
           <img class="recipe-img">
           <h3 class="recipe-title"></h3>
           <p class="tags"></p>
         </section>
-        <section>
-          <button class="to-cook"></button>
-          <button class="favorite"></button>
+        <section class="recipe-4 card">
+          <button class="to-cook card-btn">Cook</button>
+          <button class="favorite card-btn">Fav</button>
           <img class="recipe-img">
           <h3 class="recipe-title"></h3>
           <p class="tags"></p>
-        </section>
-        <section>
-          <button class="see-earlier"></button>
-          <button class="see-later"></button>
         </section>
       </div>
+      <section>
+        <button class="see-earlier">Past</button>
+        <button class="see-later">More</button>
+      </section>
     </main>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/recipes.js"></script>
