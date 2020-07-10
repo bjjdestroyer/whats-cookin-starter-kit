@@ -8,7 +8,7 @@ class User {
   constructor(userObj) {
     this.id = userObj.id;
     this.name = userObj.name;
-    this.pantry = userObj.pantry;
+    this.pantry = new Pantry(userObj.pantry);
     this.favoriteRecipes = [];
     this.recipesToCook = [];
   }
@@ -41,7 +41,7 @@ class User {
 
   searchPantry(recipe) {
     recipe.ingredients.filter( ingredient => {
-      if (this.pantry.indexOf(ingredient) === -1) {
+      if (this.pantry.contents.indexOf(ingredient) === -1) {
         return ingredient;
       }
     });

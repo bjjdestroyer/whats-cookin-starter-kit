@@ -63,6 +63,17 @@ describe('Pantry', function() {
     })
   })
 
+  it('should still return how much of an ingredient is needed on a different recipe', function() {
+    let testRecipe = recipes[31];
+    let missingIngredients = pantry.findMissingIngredients(testRecipe);
+    expect(missingIngredients).to.deep.equal({
+      "98998": 12,
+      "8030": 6.5,
+      "19116": 9,
+      "19336": 1
+    })
+  })
+
 
   // it('should be able to remove ingredients from a cooked meal', function() {
   //   let testRecipe = recipes[0];

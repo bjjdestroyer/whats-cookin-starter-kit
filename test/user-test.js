@@ -10,6 +10,7 @@ describe('User', function() {
 
   beforeEach(function() {
     user = new User(users[0]);
+    console.log(user.pantry)
   });
 
   it('should be a function', function() {
@@ -29,7 +30,7 @@ describe('User', function() {
   });
 
   it('should have a pantry', function() {
-    expect(user.pantry).to.be.an("array");
+    expect(user.pantry.contents).to.be.an("array");
   });
 
   it('should have no favorite recipes by default', function() {
@@ -98,11 +99,11 @@ describe('User', function() {
 //     expect(user.mealsToCook[0]).to.deep.equal(recipe);
 //   });
 
-//   it('should be able to check the pantry for sufficient ingredients for a saved recipe', function() {
-//     const recipe = recipes[0];
-//     let pantryMessage;// = Have user use pantry methods to evaluate
-//     expect(pantryMessage).to.equal("You do not currently have sufficient ingredients to cook this recipe.");
-//   });
+  it('should be able to check the pantry for sufficient ingredients for a saved recipe', function() {
+    const recipe = recipes[0];
+    let pantryMessage = user.pantry.canMakeRecipe(recipe);
+    expect(pantryMessage).to.equal("You do not have sufficient ingredients for this recipe.");
+  });
 
 //   //it('should be able to return a message with ingredients needed and cost', function () {
 //     const recipe = recipes[0];
