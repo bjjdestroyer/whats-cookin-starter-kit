@@ -37,7 +37,11 @@ class Recipe {
 
   getTotalIngredientCost() {
     return this.ingredients.reduce((totalPrice, ingredient) => {
-      return totalPrice + (ingredient.quantity.amount * this.getIngredientPrice(ingredient.id))
+      const ingredientAmount = ingredient.quantity.amount;
+      const ingredientPrice = this.getIngredientPrice(ingredient.id);
+      const ingredientTotal = ingredientAmount * ingredientPrice;
+
+      return totalPrice + ingredientTotal;
     }, 0)
   }
 
@@ -46,6 +50,6 @@ class Recipe {
   }
 }
 
-if(typeof(module) !== 'undefined') {
+if (typeof(module) !== 'undefined') {
   module.exports = Recipe;
 }

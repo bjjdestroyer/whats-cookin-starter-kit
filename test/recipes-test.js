@@ -2,7 +2,6 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Recipes = require('../src/Recipes');
-const ingredients = require('../data/ingredients');
 const allRecipes = require('../data/recipes');
 
 describe('Recipes', function () {
@@ -31,9 +30,9 @@ describe('Recipes', function () {
     expect(filteredId).to.deep.equal(allRecipes[2].id);
   });
 
-  it('should be able to filter and return multiple recipes by tag', function () {
+  it('should be able to filter & return multiple recipes by tag', function () {
     const filteredByTag = recipes.filterByTag("salad");
-    const filteredIds = [filteredByTag[0].id, filteredByTag[1].id, filteredByTag[2].id, filteredByTag[3].id,]
+    const filteredIds = [filteredByTag[0].id, filteredByTag[1].id, filteredByTag[2].id, filteredByTag[3].id];
     const recipeIds = [793584, 999044, 576906, 799732]
 
     expect(filteredIds).to.deep.equal(recipeIds);
@@ -49,7 +48,7 @@ describe('Recipes', function () {
 
   it('should be able to find recipes by ingredient', function () {
     const filteredByIngredient = recipes.filterByIngredient("bicarbonate of soda");
-    const filteredIds = [filteredByIngredient[0].id, filteredByIngredient[1].id, filteredByIngredient[2].id, filteredByIngredient[3].id,]
+    const filteredIds = [filteredByIngredient[0].id, filteredByIngredient[1].id, filteredByIngredient[2].id, filteredByIngredient[3].id];
     const recipeIds = [595736, 623855, 611858, 583738];
 
     expect(filteredIds).to.deep.equal(recipeIds);
@@ -57,13 +56,13 @@ describe('Recipes', function () {
 
   it('should be able to find all recipes that have the same word in it', function () {
     const filteredByIngredient = recipes.filterByIngredient("soda");
-    const filteredIds = filteredByIngredient.map(recipe => recipe.id);
+    const filteredIds = [filteredByIngredient[0].id, filteredByIngredient[1].id, filteredByIngredient[2].id, filteredByIngredient[3].id, filteredByIngredient[4].id];
     const recipeIds = [595736, 623855, 602311, 611858, 583738];
 
     expect(filteredIds).to.deep.equal(recipeIds);
   });
 
-  it('should be able to return an empty array if no recipe has that ingredient', function () {
+  it('should be able to return an empty array if no recipe has ingredient', function () {
     let noIngredient = recipes.filterByIngredient('rhubarb');
 
     expect(noIngredient).to.deep.equal([]);
