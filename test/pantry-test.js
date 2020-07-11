@@ -25,29 +25,36 @@ describe('Pantry', function() {
     expect(pantry.contents[2].ingredient).to.equal(1082047);
   })
 
-  it('should be able to determine if it has enough ingredients for a given recipe', function() {
+  it('should be able to respond if it has enough ingredients for a recipe', function() {
     let testRecipe = recipes[0];
     let response = pantry.canMakeRecipe(testRecipe);
-    expect(response).to.equal("You do not have sufficient ingredients for this recipe.");
+    let autoResponse = "You do not have sufficient ingredients for this recipe."
+    
+    expect(response).to.equal(autoResponse);
   })
 
   it('should still run on an empty pantry', function() {
     pantry = new Pantry(users[21].pantry);
     let testRecipe = recipes[0];
     let response = pantry.canMakeRecipe(testRecipe);
-    expect(response).to.equal("You do not have sufficient ingredients for this recipe.");
+    let newResponse = "You do not have sufficient ingredients for this recipe.";
+    
+    expect(response).to.equal(newResponse);
   })
 
   it('should return how much of each ingredient still needed', function() {
     let testRecipe = recipes[0];
     let missingIngredients = pantry.findMissingIngredients(testRecipe);
-    expect(missingIngredients).to.deep.equal({"19206": 1, "19334": 0.5, "1012047": 24, 10019903: 2});
+    let ingredients = { "19206": 1, "19334": 0.5, "1012047": 24, 10019903: 2 };
+
+    expect(missingIngredients).to.deep.equal(ingredients);
   })
 
-  it('should still return how much of each ingredient needed if pantry is empty', function() {
+  it('should return amount needed each ingredient pantry is empty', function() {
     pantry = new Pantry(users[21].pantry);
     let testRecipe = recipes[0];
     let missingIngredients = pantry.findMissingIngredients(testRecipe);
+
     expect(missingIngredients).to.deep.equal({
       "20081":  1.5,
       "18372":  0.5,
@@ -63,9 +70,10 @@ describe('Pantry', function() {
     })
   })
 
-  it('should still return how much of an ingredient is needed on a different recipe', function() {
+  it('should return amount ingredients needed on another recipe', function() {
     let testRecipe = recipes[31];
     let missingIngredients = pantry.findMissingIngredients(testRecipe);
+
     expect(missingIngredients).to.deep.equal({
       "98998": 12,
       "8030": 6.5,
