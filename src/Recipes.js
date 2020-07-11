@@ -1,10 +1,10 @@
-const fullIngredientsList = require('../data/ingredients');
-const recipeData = require('../data/recipes');
-const Recipe = require('./Recipe');
+// const fullIngredientsList = require('../data/ingredients');
+// const recipeData = require('../data/recipes');
+// const Recipe = require('./Recipe');
 
 class Recipes {
-  constructor() {
-    this.recipes = recipeData;
+  constructor(recipes = recipeData) {
+    this.recipes = recipes;
   }
 
   filterByTag(tag) {
