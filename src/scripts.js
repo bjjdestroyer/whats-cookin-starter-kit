@@ -1,3 +1,5 @@
+const userName = document.querySelector('.user-name');
+
 let recipes;
 let user;
 
@@ -22,8 +24,13 @@ function instantiateWebsiteOnLoad() {
   instantiateEachRecipe(recipes);
   let randomUserIndex = getRandomIndex(usersData);
   user = instantiateUser(usersData[randomUserIndex]);
+  populateUser(user);
 }
 
 function getRandomIndex(array) {
   return Math.floor(array.length - (Math.random() * array.length));
+}
+
+function populateUser(user) {
+  userName.innerText = `Hi ${user.name}!`;
 }
