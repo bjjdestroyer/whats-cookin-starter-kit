@@ -4,7 +4,8 @@
 
 class Recipes {
   constructor(recipes = recipeData) {
-    this.recipes = recipes;
+    this.recipes = recipeData;
+    this.currentIndex = 3;
   }
 
   filterByTag(tag) {
