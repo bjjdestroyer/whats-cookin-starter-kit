@@ -29,7 +29,7 @@ class User {
     return recipesToFilter.filter(recipe => recipe.tags.includes(tag));
   }
 
-  searchRecipes(userInput) {
+  searchFavoriteRecipes(userInput) {
     this.favoriteRecipes.filter( recipe => {
       if (recipe.name === userInput) {
         return recipe;
@@ -39,17 +39,17 @@ class User {
     });
   }
 
-  searchPantry(recipe) {
-    recipe.ingredients.filter( ingredient => {
-      if (this.pantry.contents.indexOf(ingredient) === -1) {
-        return ingredient;
-      }
-    });
-
-    // need to check to see if recipe ingredient is in pantry;
-    // if statement to see if ingredient isn't in the pantry
-    // return ingredient if it's not in the pantry
-  }
+  // searchPantry(recipe) {
+  //   recipe.ingredients.filter( ingredient => {
+  //     if (this.pantry.contents.indexOf(ingredient) === -1) {
+  //       return ingredient;
+  //     }
+  //   });
+  //
+  //   // need to check to see if recipe ingredient is in pantry;
+  //   // if statement to see if ingredient isn't in the pantry
+  //   // return ingredient if it's not in the pantry
+  // }
 
   checkForIngredients(recipe) {
     const canMakeMessage = this.pantry.canMakeRecipe(recipe);
