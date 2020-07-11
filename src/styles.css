@@ -85,17 +85,18 @@ main {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(0, 0, 0);
+  color: black;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .pantry-content,
 .shopping-content {
   position: relative;
-  background-color: white;
+  background-color: bisque;
   padding: 20px;
   margin: auto;
-  width: 75%;
+  width: 50%;
+  text-align: center;
 }
 
 .close-button {
