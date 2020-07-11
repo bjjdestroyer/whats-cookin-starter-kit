@@ -6,6 +6,7 @@ class Pantry {
   }
 
   findingNeededIngredients(recipe) {
+    console.log(recipe.ingredients);
     let neededIngredients = {};
     recipe.ingredients.forEach(ingredient => {
       neededIngredients[ingredient.id] = ingredient.quantity.amount;

@@ -35,7 +35,7 @@ class Recipes {
 
     let recipeArray = []
 
-    this.recipes.forEach( recipe => {
+    this.recipes.forEach(recipe => {
       recipe.ingredients.forEach( ingredient => {
         if (ingredientNeeded === []) {
           return;
