@@ -99,10 +99,12 @@ describe('User', function() {
 //     expect(user.mealsToCook[0]).to.deep.equal(recipe);
 //   });
 
-  it('should be able to check the pantry for sufficient ingredients for a saved recipe', function() {
+  it('should be able to check pantry for all ingredients for a saved recipe', function() {
     const recipe = recipes[0];
     let pantryMessage = user.pantry.canMakeRecipe(recipe);
-    expect(pantryMessage).to.equal("You do not have sufficient ingredients for this recipe.");
+    const response = "You do not have sufficient ingredients for this recipe.";
+
+    expect(pantryMessage).to.equal(response);
   });
 
 //   //it('should be able to return a message with ingredients needed and cost', function () {
