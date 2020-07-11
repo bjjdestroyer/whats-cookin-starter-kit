@@ -52,21 +52,14 @@ class User {
   }
 
   checkForIngredients(recipe) {
-    // Checking to see if you have the right amount of ingredients for a recipe
-    // use reduce on recipe.ingredients array; acc is neededList, cv is
-    // ingredient. Iterate over pantry contents with forEach. If ingredient
-    // matches pantry ingredient, compare amounts and return
-    // if pantry doesn't include the ingredient, return recipe ingredient
-    recipe.ingredients.reduce((neededList, ingredient) => {
-      this.pantry.forEach( pantryIngredient => {
-        if (this.pantry.includes(ingredient) && neededList[ingredient]) {
-          neededList[ingredient] = neededList[ingredient] + pantryIngredient.amount;
-        } else if (this.pantry.includes(ingredient) && !neededList[ingredient]) {
-          neededList[ingredient] = ingredient.amount;
-          neededList[ingredient] = neededList[ingredient] + pantryIngredient.amount;
-        }
-      })
-    }, {})
+    const canMakeMessage = this.pantry.canMakeRecipe(recipe);
+    if (canMakeMessage.includes('not')) {
+      const missingIngredients = this.pantry.findMissingIngredients(recipe);
+      let numberOfMissingIngredients = Object.keys(missingIngredients).length;
+      return `${canMakeMessage} You still need ${numberOfMissingIngredients} ingredients.`;
+    } else {
+      return canMakeMessage;
+    }
   }
 
 
