@@ -1,9 +1,20 @@
 const userName = document.querySelector('.user-name');
+const pantryModal = document.querySelector('.pantry-modal');
+const pantryButton = document.querySelector('.pantry');
+const closeButton = document.querySelector('.close-button');
 
 let recipes;
 let user;
 
+window.addEventListener('click', clickWrangler);
 window.onload = instantiateWebsiteOnLoad();
+
+function clickWrangler(event) {
+    pantryModal.style.display = "none";
+  if (event.target.closest("button") === pantryButton) {
+    pantryModal.style.display = "block";
+  }
+}
 
 function instantiateRecipes() {
   return new Recipes();
