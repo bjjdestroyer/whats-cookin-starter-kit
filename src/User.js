@@ -66,12 +66,27 @@ class User {
   getIngredientNames(ingredientIds) {
     let ingredientObjects = ingredientIds.map(id => {
       return ingredientsData.find(ingredient => {
-        return ingredient.id.toString() === id;
+        if(ingredient.id) {
+          return typeof(ingredient.id) === 'number' ?
+          ingredient.id === id : ingredient.id.toString() === id;
+        }
       })
     })
-    return  ingredientObjects.map(ingredient => {
+    return ingredientObjects.map(ingredient => {
       return ingredient.name;
     })
+  }
+
+  getPantryIngredients() {
+    let pantryContents = this.pantry.contents;
+    let ingredientIds = pantryContents.map(ingredient => {
+      return ingredient.ingredient;
+    })
+    let ingredientNames = this.getIngredientNames(ingredientIds);
+    let ingredientNamesAndAmounts = ingredientNames.map((name, index) => {
+      return `${name}: ${Object.values(pantryContents)[index].amount}`;
+    })
+    return ingredientNamesAndAmounts.join('\n');
   }
 
   listMissingIngredients(recipe) {
@@ -80,7 +95,6 @@ class User {
       return ingredient;
     })
     let ingredientNames = this.getIngredientNames(ingredientIds);
-    console.log(ingredientNames);
     let ingredientNamesAndAmounts = ingredientNames.map((name, index) => {
       return `${name}: ${Object.values(missingIngredients)[index]}`;
     })
