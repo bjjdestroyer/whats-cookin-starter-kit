@@ -6,20 +6,23 @@ class Pantry {
   }
 
   findingNeededIngredients(recipe) {
+    console.log(recipe.ingredients);
     let neededIngredients = {};
     recipe.ingredients.forEach(ingredient => {
       neededIngredients[ingredient.id] = ingredient.quantity.amount;
     });
     return neededIngredients;
-  };
+  }
 
   addingNeededIngredients(neededIngredients) {
+    const keysNeeded = Object.keys(neededIngredients);
+
     return this.contents.forEach(ingredient => {
-      if (Object.keys(neededIngredients).includes(ingredient.ingredient.toString())) {
+      if (keysNeeded.includes(ingredient.ingredient.toString())) {
         neededIngredients[ingredient.ingredient] -= ingredient.amount;
       }
     });
-  };
+  }
 
   canMakeRecipe(recipe) {
     let neededIngredients = this.findingNeededIngredients(recipe);
@@ -32,7 +35,7 @@ class Pantry {
     } else {
       return "You have enough ingredients for this recipe!"
     }
-  };
+  }
 
   findMissingIngredients(recipe) {
     let ingredientsNeeded = this.findingNeededIngredients(recipe);
@@ -46,9 +49,9 @@ class Pantry {
     });
 
     return ingredientsToBuy;
-  };
+  }
 }
 
-if(typeof(module) !== 'undefined') {
+if (typeof(module) !== 'undefined') {
   module.exports = Pantry;
 }

@@ -1,4 +1,4 @@
-// const fullIngredientsList = require('../data/ingredients');
+// const ingredientsData = require('../data/ingredients');
 // const { forEach } = require('../data/users');
 
 class Recipe {
@@ -13,7 +13,7 @@ class Recipe {
 
   getIngredientPrice(id) {
     let ingredientPrice;
-    fullIngredientsList.forEach(ingredient => {
+    ingredientsData.forEach(ingredient => {
       if (ingredient.id === id) {
         return ingredientPrice = ingredient.estimatedCostInCents;
       }
@@ -21,12 +21,12 @@ class Recipe {
     return ingredientPrice;
   }
 
-  getIngredientNameList() {
+  getIngredientNameList(ingredients) {
     let ingredientIds = this.ingredients.map(ingredient => {
       return ingredient.id;
-    });
+    })
     let ingredientObjects = ingredientIds.map(id => {
-      return fullIngredientsList.find(ingredient => {
+      return ingredientsData.find(ingredient => {
         return id === ingredient.id;
       });
     });
@@ -37,7 +37,11 @@ class Recipe {
 
   getTotalIngredientCost() {
     return this.ingredients.reduce((totalPrice, ingredient) => {
-      return totalPrice + (ingredient.quantity.amount * this.getIngredientPrice(ingredient.id))
+      const ingredientAmount = ingredient.quantity.amount;
+      const ingredientPrice = this.getIngredientPrice(ingredient.id);
+      const ingredientTotal = ingredientAmount * ingredientPrice;
+
+      return totalPrice + ingredientTotal;
     }, 0)
   }
 
@@ -46,6 +50,6 @@ class Recipe {
   }
 }
 
-if(typeof(module) !== 'undefined') {
+if (typeof(module) !== 'undefined') {
   module.exports = Recipe;
 }

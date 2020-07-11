@@ -1,9 +1,9 @@
 // const fullIngredientsList = require('../data/ingredients');
-// const allRecipes = require('../data/recipes');
+// const recipeData = require('../data/recipes');
 // const Recipe = require('./Recipe');
 
 class Recipes {
-  constructor() {
+  constructor(recipes = recipeData) {
     this.recipes = recipeData;
     this.currentIndex = 3;
   }
@@ -17,21 +17,26 @@ class Recipes {
         return noTag;
       }
     });
-  }
+  };
 
-  filterByIngredient(ingredientName) {
-    const ingredientNeeded = fullIngredientsList.filter( ingredient => {
-      let newIngredient = ingredient.name;
-      if (newIngredient === undefined) {
+  getAllIngredients(ingredientName) {
+    const ingredientNeeded = fullIngredientsList.filter(ingredient => {
+      if (ingredient.name === undefined) {
         return;
-      } else if (newIngredient.includes(ingredientName)) {
+      } else if (ingredient.name.includes(ingredientName)) {
         return ingredient;
       }
     });
 
+    return ingredientNeeded;
+  };
+
+  filterByIngredient(ingredientName) {
+    const ingredientNeeded = this.getAllIngredients(ingredientName);
+
     let recipeArray = []
 
-    this.recipes.forEach( recipe => {
+    this.recipes.forEach(recipe => {
       recipe.ingredients.forEach( ingredient => {
         if (ingredientNeeded === []) {
           return;
@@ -48,6 +53,6 @@ class Recipes {
   }
 }
 
-if(typeof(module) !== 'undefined') {
+if (typeof(module) !== 'undefined') {
   module.exports = Recipes;
 }

@@ -5,16 +5,28 @@ const recipeCard3 = document.querySelector('.recipe-3');
 const recipeCard4 = document.querySelector('.recipe-4');
 const backBtn = document.querySelector('.back');
 const forwardBtn = document.querySelector('.forward');
+const pantryModal = document.querySelector('.pantry-modal');
+const pantryButton = document.querySelector('.pantry');
+const closeButton = document.querySelector('.close-button');
+const pantryList = document.querySelector('.pantry-list');
 
 let recipes;
 let user;
 let currentCards = [];
 let recipeCards = [recipeCard1, recipeCard2, recipeCard3, recipeCard4];
 
+window.addEventListener('click', clickWrangler);
 window.onload = instantiateWebsiteOnLoad();
 backBtn.addEventListener("click", goBack);
 forwardBtn.addEventListener("click", goForward);
 
+
+function clickWrangler(event) {
+    pantryModal.style.display = "none";
+  if (event.target.closest("button") === pantryButton) {
+    pantryModal.style.display = "block";
+  }
+}
 
 function instantiateRecipes() {
   return new Recipes();
@@ -30,14 +42,18 @@ function instantiateUser(user) {
   return new User(user);
 }
 
+function populateList() {
+  pantryList.innerText = user.getPantryIngredients();
+}
+
 function instantiateWebsiteOnLoad() {
   recipes = instantiateRecipes();
   instantiateEachRecipe(recipes);
   let randomUserIndex = getRandomIndex(usersData);
   user = instantiateUser(usersData[randomUserIndex]);
   populateUser(user);
-
   createCards(recipes);
+  populateList();
 }
 
 function getRandomIndex(array) {
