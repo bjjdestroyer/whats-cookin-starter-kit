@@ -87,7 +87,9 @@ function goForward() {
   recipeCards.forEach(card => {
     if(recipes.currentIndex < 50) {
       recipes.currentIndex++;
-      card.innerHTML = `<img src=${recipes.recipes[recipes.currentIndex].image}><h3>${recipes.recipes[recipes.currentIndex].name}</h3><p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
+      card.innerHTML = `<div class="button-holder">
+            <button class="to-cook card-btn"><img class="pot icon" src="../assets/cooking-pot.svg"></button>
+            <button class="favorite card-btn"><img class="heart icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[recipes.currentIndex].image}><h3>${recipes.recipes[recipes.currentIndex].name}</h3><p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
     }
   })
 }
@@ -95,3 +97,5 @@ function goForward() {
 // when forward button is pressed, we see the next four recipes in the array
 // iterate over recipes and change current recipe to new recipe
 // need to change index values being used
+
+// lose buttons when recipes change
