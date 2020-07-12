@@ -78,7 +78,7 @@ function goBack() {
   recipeCards.forEach(card => {
     if (recipes.currentIndex > 0) {
       recipes.currentIndex--;
-      card.innerHTML = `<img src=${recipes.recipes[recipes.currentIndex].image}><h3>${recipes.recipes[recipes.currentIndex].name}</h3><p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
+      card.innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[recipes.currentIndex].image}><h3>${recipes.recipes[recipes.currentIndex].name}</h3><p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
     }
   })
 }
@@ -87,9 +87,7 @@ function goForward() {
   recipeCards.forEach(card => {
     if(recipes.currentIndex < 50) {
       recipes.currentIndex++;
-      card.innerHTML = `<div class="button-holder">
-            <button class="to-cook card-btn"><img class="pot icon" src="../assets/cooking-pot.svg"></button>
-            <button class="favorite card-btn"><img class="heart icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[recipes.currentIndex].image}><h3>${recipes.recipes[recipes.currentIndex].name}</h3><p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
+      card.innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[recipes.currentIndex].image}><h3>${recipes.recipes[recipes.currentIndex].name}</h3><p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
     }
   })
 }
