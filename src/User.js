@@ -63,18 +63,21 @@ class User {
     }
   }
 
-  getIngredientNames(ingredientIds) {
+  getIngredientInformation(ingredientIds, value) {
     let ingredientObjects = ingredientIds.map(id => {
       return ingredientsData.find(ingredient => {
         if(ingredient.id) {
-          return typeof(ingredient.id) === 'number' ?
-          ingredient.id === id : ingredient.id.toString() === id;
+          return ingredient.id.toString() === id.toString();
         }
       })
     })
     return ingredientObjects.map(ingredient => {
+      if(value) {
+      return ingredient[value];
+    } else {
       return ingredient.name;
-    })
+    }
+  })
   }
 
   getPantryIngredients() {
@@ -82,7 +85,7 @@ class User {
     let ingredientIds = pantryContents.map(ingredient => {
       return ingredient.ingredient;
     })
-    let ingredientNames = this.getIngredientNames(ingredientIds);
+    let ingredientNames = this.getIngredientInformation(ingredientIds);
     let ingredientNamesAndAmounts = ingredientNames.map((name, index) => {
       return `${name}: ${Object.values(pantryContents)[index].amount}`;
     })
@@ -94,26 +97,30 @@ class User {
     let ingredientIds = Object.keys(missingIngredients).map(ingredient => {
       return ingredient;
     })
-    let ingredientNames = this.getIngredientNames(ingredientIds);
+    let unitObjects = recipe.getIngredientUnits(recipe.ingredients)
+    let missingIngredientUnits = ingredientIds.map((id, index) => {
+      let missingUnit = Object.values(unitObjects[index]).find(unit => {
+        return Object.keys(unitObjects[index]) === typeof(id) === 'string' ?
+        id : id.toString();
+      })
+      return missingUnit;
+    })
+    let ingredientNames = this.getIngredientInformation(ingredientIds);
     let ingredientNamesAndAmounts = ingredientNames.map((name, index) => {
-      return `${name}: ${Object.values(missingIngredients)[index]}`;
+      return `${name}(${missingIngredientUnits[index]}): ${Object.values(missingIngredients)[index]}`;
     })
     return ingredientNamesAndAmounts.join(', ');
   }
 
-  // shopForIngredients(recipe) {
-  //   // ingredients needed and cost
-  //   // round up for non-integers?
-  //   const missingIngredients =
-  //
-  //   // find the keys for ingredients needed.
-  //   // use the array to access the values
-  //   // return new object with keys and values of amountNeeded and cost
-  //
-  //
-  //
-  //
-  // }
+
+
+  /* shopForIngredients(recipe) {
+  starting with a recipe object and an array of ingredient objects
+  I want to end with a string that reads "IngredientName: amount unit, cost"
+  To get the ingredientName: amount piece, I can call listMissingIngredients and
+  use the split method with ', ' to split them into "name: amount" strings.
+  To get the unit, I need to go into the recipe object,
+ } */
 }
 if(typeof(module) !== 'undefined') {
   module.exports = User;

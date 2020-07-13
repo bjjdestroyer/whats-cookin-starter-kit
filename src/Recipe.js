@@ -21,22 +21,46 @@ class Recipe {
     return ingredientPrice;
   }
 
-  getIngredientNameList(ingredients) {
-    let ingredientIds = this.ingredients.map(ingredient => {
+  getIngredientUnits(ingredients) {
+    return ingredients.map(ingredient => {
+      return {
+        [ingredient.id]: ingredient.quantity.unit
+      }
+    })
+  }
+
+  getIngredientIds(ingredients) {
+    return ingredientIds = ingredients.map(ingredient => {
       return ingredient.id;
     })
-    let ingredientObjects = ingredientIds.map(id => {
-      return ingredientsData.find(ingredient => {
-        return id === ingredient.id;
-      });
-    });
+  }
+
+  getIngredientObjects(ingredientPiece) {
+    if(typeof(ingredientPiece === 'number')) {
+      return ingredientObjects = ingredientPiece.map(id => {
+        return ingredientsData.find(ingredient => {
+          return id === ingredient.id;
+        })
+      })
+    } else {
+      return ingredientObjects = ingredientPiece.map(id => {
+        return ingredientsData.find(ingredient => {
+          return id === ingredient.id;
+        })
+      })
+    }
+  }
+
+  getIngredientNameList(ingredients) {
+    let ingredientIds = getIngredientIds(ingredients);
+    let ingredientObjects = getIngredientObjects(ingredientIds);
     return ingredientObjects.map(ingredient => {
       return ingredient.name;
     })
   }
 
-  getTotalIngredientCost() {
-    return this.ingredients.reduce((totalPrice, ingredient) => {
+  getTotalIngredientCost(ingredients) {
+    return ingredients.reduce((totalPrice, ingredient) => {
       const ingredientAmount = ingredient.quantity.amount;
       const ingredientPrice = this.getIngredientPrice(ingredient.id);
       const ingredientTotal = ingredientAmount * ingredientPrice;
