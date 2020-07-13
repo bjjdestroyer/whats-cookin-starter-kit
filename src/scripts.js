@@ -29,9 +29,10 @@ function clickWrangler(event) {
     pantryModal.style.display = "none";
   if (event.target.closest("button") === pantryButton) {
     pantryModal.style.display = "block";
-  } else if (event.target.classList[0] === "heart-add") {
+  } else if (event.target.classList[0] === "heart-add" || event.path[1].classList[0] === 'favorite') {
     addToFavorites(event.path[3].children[2].innerText);
-  } else if (event.target.classList[0] === "pot-add") {
+  } else if (event.target.classList[0] === "pot-add" || event.path[1].classList[0] === 'to-cook') {
+    console.log(event);
     addToCookList(event.path[3].children[2].innerText);
   } else if (
     event.target.classList[0] === "forward" ||
