@@ -32,7 +32,7 @@ function clickWrangler(event) {
   } else if (event.target.classList[0] === "heart-add") {
     addToFavorites(event.path[3].children[2].innerText);
   } else if (event.target.classList[0] === "pot-add") {
-    console.log('pot');
+    addToCookList(event.path[3].children[2].innerText);
   } else if (
     event.target.classList[0] === "forward" ||
     event.target.classList[0] === "forward-icon"
@@ -118,6 +118,6 @@ function addToFavorites (currentRecipe) {
   user.favoriteRecipes.push(currentRecipe);
 }
 
-function addToCookList(event) {
-
+function addToCookList(currentRecipe) {
+  user.recipesToCook.push(currentRecipe)
 }
