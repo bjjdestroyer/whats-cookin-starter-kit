@@ -20,9 +20,6 @@ let recipeCards = [recipeCard1, recipeCard2, recipeCard3, recipeCard4];
 
 window.addEventListener('click', clickWrangler);
 window.onload = instantiateWebsiteOnLoad();
-//addList.addEventListener("click", addToLists);
-//backBtn.addEventListener("click", goBack);
-//forwardBtn.addEventListener("click", goForward);
 
 function addToLists(event) {
   console.log(event);
@@ -33,7 +30,7 @@ function clickWrangler(event) {
   if (event.target.closest("button") === pantryButton) {
     pantryModal.style.display = "block";
   } else if (event.target.classList[0] === "heart-add") {
-    console.log('heart');
+    addToFavorites(event.path[3].children[2].innerText);
   } else if (event.target.classList[0] === "pot-add") {
     console.log('pot');
   } else if (
@@ -117,6 +114,10 @@ function goForward() {
   })
 }
 
-// when forward button is pressed, we see the next four recipes in the array
-// iterate over recipes and change current recipe to new recipe
-// need to change index values being used
+function addToFavorites (currentRecipe) {
+  user.favoriteRecipes.push(currentRecipe);
+}
+
+function addToCookList(event) {
+
+}
