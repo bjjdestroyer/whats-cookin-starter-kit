@@ -8,11 +8,40 @@
       rel="stylesheet">
   </head>
   <body>
-    <h3 class="user-name"></h3>
     <header>
+      <h3 class="user-name"></h3>
       <h1 class="title">What's Cookin'?</h1>
       <section class="search-bar">
-        <input>
+        <div class="search">
+          <form action="#">
+            <input class="search-input" type="search" placeholder="Search Recipes or Ingredients" name="search">
+            <input class="search-submit" type="submit" value="Submit">
+          </form>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown"><img class="filter icon" src="../assets/cone.svg"></button>
+          <div class="tag-list" id="filter-list">
+            <a class="tags">Antipasti</a>
+            <a class="tags">Starter</a>
+            <a class="tags">Snack</a>
+            <a class="tags">Appetizer</a>
+            <a class="tags">Antipasto</a>
+            <a class="tags">Hor d'Oeuvre</a>
+            <a class="tags">Lunch</a>
+            <a class="tags">Main Course</a>
+            <a class="tags">Main Dish</a>
+            <a class="tags">Dinner</a>
+            <a class="tags">Sauce</a>
+            <a class="tags">Side Dish</a>
+            <a class="tags">Morning Meal</a>
+            <a class="tags">Brunch</a>
+            <a class="tags">Breakfast</a>
+            <a class="tags">Salad</a>
+            <a class="tags">Condiment</a>
+            <a class="tags">Dip</a>
+            <a class="tags">Spread</a>
+          </div>
+        </div>
         <button class="favorites-list top-bar"><img class="heart icon" src="../assets/heart.svg"></button>
         <button class="to-cook-list top-bar"><img class="pot icon" src="../assets/cooking-pot.svg"></button>
         <button class="pantry top-bar"><img class="icon" src="../assets/pantry.svg"></button>
