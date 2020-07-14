@@ -9,6 +9,7 @@ const pantryButton = document.querySelector('.pantry');
 const favoritesButton = document.querySelector('.favorites-list');
 const toCookBtn = document.querySelector('.to-cook-list');
 const shoppingListBtn = document.querySelector('.shopping-list');
+const filterBtn = document.querySelector('.dropdown-btn');
 const closeButton = document.querySelector('.close-button');
 const modal = document.querySelector('.modal');
 const listTitle = document.querySelector('.modal-title');
@@ -43,6 +44,9 @@ function clickWrangler(event) {
   } else if (event.target.closest("button") === shoppingListBtn) {
     modal.style.display = "block";
     populateList("shopping-list");
+  } else if(event.target.closest("button") === filterBtn) {
+    console.log(event);
+    dropdownFilter();
   } else if (event.target.classList[0] === "heart-add") {
     addToFavorites(event.path[3].children[2].innerText);
   } else if (event.target.classList[0] === "pot-add") {
@@ -152,4 +156,8 @@ function addToCookList(currentRecipe) {
   } else {
     return;
   }
+}
+
+function dropdownFilter() {
+  tagList.classList.toggle('show');
 }
