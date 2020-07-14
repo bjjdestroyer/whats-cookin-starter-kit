@@ -21,24 +21,24 @@ const listContents = document.querySelector('.list');
 const addList = document.querySelectorAll('.button-holder');
 const searchBar = document.querySelector('.search-input');
 const tagList = document.querySelector('.tag-list');
+const userInput = document.querySelector('form');
+const submitInput = document.querySelector('.search-submit');
 
 let recipes;
 let user;
 let currentCards = [];
 let recipeCards = [recipeCard1, recipeCard2, recipeCard3, recipeCard4];
+let searchValue;
 
 window.addEventListener('click', clickWrangler);
 window.onload = instantiateWebsiteOnLoad();
-
-// function addToLists(event) {
-//   console.log(event);
-// }
+userInput.addEventListener('input', keepInput);
 
 function clickWrangler(event) {
     modal.style.display = "none";
   if (event.target.closest("button") === pantryButton) {
     modal.style.display = "block";
-    populateList('pantry');
+    populateList("pantry");
   } else if (event.target.closest("button") === favoritesButton) {
     modal.style.display = "block";
     populateList("favorites");
@@ -48,9 +48,9 @@ function clickWrangler(event) {
   } else if (event.target.closest("button") === shoppingListBtn) {
     modal.style.display = "block";
     populateList("shopping-list");
-  } else if(event.target.closest("button") === filterBtn) {
+  } else if (event.target.closest("button") === filterBtn) {
     dropdownFilter();
-  } else if(event.target.classList[0] === "tags") {
+  } else if (event.target.classList[0] === "tags") {
     dropdownFilter();
     modal.style.display = "block";
     displayTaggedRecipes(event.target.text);
@@ -70,7 +70,7 @@ function clickWrangler(event) {
   } else if (event.target.closest(".card") === recipeCard4) {
     modal.style.display = "block";
     populateRecipe(4);
-  }else if (
+  } else if (
     event.target.classList[0] === "forward" ||
     event.target.classList[0] === "forward-icon"
   ) {
@@ -80,7 +80,13 @@ function clickWrangler(event) {
     event.target.classList[0] === "back-icon"
   ) {
     goBack();
+  } else if (event.target.closest("button") === submitInput) {
+    searchForRecipes(searchValue);
   }
+}
+
+function keepInput(event) {
+  searchValue = event.target.value;
 }
 
 function instantiateRecipes() {
@@ -212,4 +218,9 @@ function displayTaggedRecipes(tagToFilter) {
 
   listTitle.innerText = "Filtered Recipes";
   listContents.innerText = filteredTitles;
+}
+
+function searchForRecipes(inputValue) {
+  event.preventDefault
+  console.log(inputValue);
 }
