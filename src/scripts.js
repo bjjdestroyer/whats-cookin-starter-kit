@@ -41,14 +41,18 @@ function clickWrangler(event) {
   } else if (event.target.closest("button") === shoppingListBtn) {
     modal.style.display = "block";
     populateList("shopping-list");
-  } else if(event.target.closest(".card") === recipeCard1) {
+  } else if (event.target.closest(".card") === recipeCard1) {
     modal.style.display = "block";
-  } else if(event.target.closest(".card") === recipeCard2) {
+    populateRecipe();
+  } else if (event.target.closest(".card") === recipeCard2) {
     modal.style.display = "block";
-  } else if(event.target.closest(".card") === recipeCard3) {
+    populateRecipe();
+  } else if (event.target.closest(".card") === recipeCard3) {
     modal.style.display = "block";
-  } else if(event.target.closest(".card") === recipeCard4) {
+    populateRecipe();
+  } else if (event.target.closest(".card") === recipeCard4) {
     modal.style.display = "block";
+    populateRecipe();
   } else if (event.target.classList[0] === "heart-add") {
     addToFavorites(event.path[3].children[2].innerText);
   } else if (event.target.classList[0] === "pot-add") {
@@ -95,6 +99,10 @@ function populateList(listType) {
   }
 }
 
+function populateRecipe() {
+
+}
+
 function instantiateWebsiteOnLoad() {
   recipes = instantiateRecipes();
   instantiateEachRecipe(recipes);
@@ -113,13 +121,13 @@ function populateUser(user) {
 }
 
 function createCards(recipes) {
-  recipeCards[0].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[0].image}><h3>${recipes.recipes[0].name}</h3><p>${recipes.recipes[0].tags}</p>`;
+  recipeCards[0].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[0].image}><h3>${recipes.recipes[0].name}</h3><p class="card-1-tags">${recipes.recipes[0].tags}</p>`;
 
-  recipeCards[1].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[1].image}><h3>${recipes.recipes[1].name}</h3><p>${recipes.recipes[1].tags}</p>`;
+  recipeCards[1].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[1].image}><h3>${recipes.recipes[1].name}</h3><p class="card-2-tags">${recipes.recipes[1].tags}</p>`;
 
-  recipeCards[2].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[2].image}><h3>${recipes.recipes[2].name}</h3><p>${recipes.recipes[2].tags}</p>`;
+  recipeCards[2].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[2].image}><h3>${recipes.recipes[2].name}</h3><p class="card-3-tags">${recipes.recipes[2].tags}</p>`;
 
-  recipeCards[3].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[3].image}><h3>${recipes.recipes[3].name}</h3><p>${recipes.recipes[3].tags}</p>`;
+  recipeCards[3].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[3].image}><h3>${recipes.recipes[3].name}</h3><p class="card-4-tags">${recipes.recipes[3].tags}</p>`;
 }
 
 function goBack() {
