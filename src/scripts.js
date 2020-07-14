@@ -106,9 +106,15 @@ function populateList(listType) {
 function populateRecipe(cardNumber) {
   const cardName = document.querySelector(`.card-${cardNumber}-name`).innerText;
   console.log(cardName);
-  recipes.recipes.find(recipe => {
+  let recipe = recipes.recipes.find(recipe => {
     return recipe.name === cardName;
   })
+  listTitle.innerText = cardName;
+  listContents.innerText = 'Instructions: \n';
+  recipe.instructions.forEach(instruction => {
+    listContents.innerText += instruction.number + ' ' + instruction.instruction + '\n';
+  })
+  listContents.innerText += `Price: $${recipe.getTotalIngredientCost(recipe.ingredients)}`;
 }
 
 function instantiateWebsiteOnLoad() {
