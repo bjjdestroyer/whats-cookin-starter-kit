@@ -42,12 +42,6 @@ class Recipe {
           return id === ingredient.id;
         })
       })
-    } else {
-      return ingredientObjects = ingredientPiece.map(id => {
-        return ingredientsData.find(ingredient => {
-          return id === ingredient.id;
-        })
-      })
     }
   }
 
@@ -60,13 +54,14 @@ class Recipe {
   }
 
   getTotalIngredientCost(ingredients) {
-    return ingredients.reduce((totalPrice, ingredient) => {
+    const rawCost = ingredients.reduce((totalPrice, ingredient) => {
       const ingredientAmount = ingredient.quantity.amount;
       const ingredientPrice = this.getIngredientPrice(ingredient.id);
       const ingredientTotal = ingredientAmount * ingredientPrice;
 
-      return totalPrice + ingredientTotal;
-    }, 0)
+      return (totalPrice + ingredientTotal);
+    }, 0);
+    return (rawCost/100).toFixed(2);
   }
 
   returnRecipeInstructions() {
