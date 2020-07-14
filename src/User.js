@@ -92,6 +92,17 @@ class User {
     return ingredientNamesAndAmounts.join('\n');
   }
 
+  getFullRecipe(recipe) {
+    let ingredientNames = recipe.getIngredientNameList(recipe.ingredients);
+    let allIngredients = ingredientNames.map((ingredient, index) => {
+      return ingredient += ': ' + recipe.ingredients[index].quantity.amount
+          + ' ' + recipe.ingredients[index].quantity.unit;
+    })
+    return allIngredients.reduce((recipe, ingredient) => {
+      return recipe += ingredient + '\n';
+      }, '')
+    }
+
   listMissingIngredients(recipe) {
     const missingIngredients = this.pantry.findMissingIngredients(recipe);
     let ingredientIds = Object.keys(missingIngredients).map(ingredient => {

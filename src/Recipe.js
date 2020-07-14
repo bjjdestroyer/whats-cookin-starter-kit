@@ -30,14 +30,14 @@ class Recipe {
   }
 
   getIngredientIds(ingredients) {
-    return ingredientIds = ingredients.map(ingredient => {
+    return ingredients.map(ingredient => {
       return ingredient.id;
     })
   }
 
   getIngredientObjects(ingredientPiece) {
     if(typeof(ingredientPiece === 'number')) {
-      return ingredientObjects = ingredientPiece.map(id => {
+      return ingredientPiece.map(id => {
         return ingredientsData.find(ingredient => {
           return id === ingredient.id;
         })
@@ -46,8 +46,8 @@ class Recipe {
   }
 
   getIngredientNameList(ingredients) {
-    let ingredientIds = getIngredientIds(ingredients);
-    let ingredientObjects = getIngredientObjects(ingredientIds);
+    let ingredientIds = this.getIngredientIds(ingredients);
+    let ingredientObjects = this.getIngredientObjects(ingredientIds);
     return ingredientObjects.map(ingredient => {
       return ingredient.name;
     })
