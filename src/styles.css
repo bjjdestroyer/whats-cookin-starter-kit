@@ -60,7 +60,7 @@ input[type=text] {
   padding: 0em 3em 0em;
 }
 
-.dropdown {
+.dropdown-btn {
   position: relative;
   display: inline-block;
 }
