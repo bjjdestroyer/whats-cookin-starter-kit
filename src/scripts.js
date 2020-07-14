@@ -77,13 +77,13 @@ function populateList(listType) {
     listTitle.innerText = 'Pantry Contents';
     listContents.innerText = user.getPantryIngredients();
   } else if (listType === 'favorites') {
-    listTitle.innerText - 'Favorite Recipes';
+    listTitle.innerText = 'Favorite Recipes';
     listContents.innerText = user.favoriteRecipes;
   } else if (listType === 'to-cook') {
-    listTitle.innerText - "Recipes to Cook";
+    listTitle.innerText = "Recipes to Cook";
     listContents.innerText = user.recipesToCook;
   } else if (listType === 'shopping-list') {
-
+    listTitle.innerText = "Shopping List";
   }
 }
 
