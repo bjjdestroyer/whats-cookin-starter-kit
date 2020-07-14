@@ -103,10 +103,7 @@ h3 {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.favorites-content,
-.to-cook-content,
-.pantry-content,
-.shopping-content {
+.content {
   position: relative;
   background-color: bisque;
   padding: 20px;
