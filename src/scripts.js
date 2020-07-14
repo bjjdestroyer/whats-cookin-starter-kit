@@ -103,9 +103,17 @@ function populateList(listType) {
   }
 }
 
+function instantiateWebsiteOnLoad() {
+  recipes = instantiateRecipes();
+  instantiateEachRecipe(recipes);
+  let randomUserIndex = getRandomIndex(usersData);
+  user = instantiateUser(usersData[randomUserIndex]);
+  populateUser(user);
+  createCards(recipes);
+}
+
 function populateRecipe(cardNumber) {
   const cardName = document.querySelector(`.card-${cardNumber}-name`).innerText;
-  console.log(cardName);
   let recipe = recipes.recipes.find(recipe => {
     return recipe.name === cardName;
   })
@@ -114,16 +122,9 @@ function populateRecipe(cardNumber) {
   recipe.instructions.forEach(instruction => {
     listContents.innerText += instruction.number + ' ' + instruction.instruction + '\n';
   })
-  listContents.innerText += `Price: $${recipe.getTotalIngredientCost(recipe.ingredients)}`;
-}
-
-function instantiateWebsiteOnLoad() {
-  recipes = instantiateRecipes();
-  instantiateEachRecipe(recipes);
-  let randomUserIndex = getRandomIndex(usersData);
-  user = instantiateUser(usersData[randomUserIndex]);
-  populateUser(user);
-  createCards(recipes);
+  listContents.innerText += `Price: $${recipe.getTotalIngredientCost(recipe.ingredients)} \n \n`;
+  listContents.innerText += user.pantry.canMakeRecipe(recipe);
+  listContents.innerText += `\n \n You still need: \n ${user.listMissingIngredients(recipe)}`;
 }
 
 function getRandomIndex(array) {
@@ -159,7 +160,7 @@ function goBack() {
 
 function goForward() {
   recipeCards.forEach((card, index) => {
-    if(recipes.currentIndex < 50) {
+    if(recipes.currentIndex < 49) {
       recipes.currentIndex++;
       card.innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[recipes.currentIndex].image}><h3 class=card-${index+1}-name>${recipes.recipes[recipes.currentIndex].name}</h3><p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
     }
