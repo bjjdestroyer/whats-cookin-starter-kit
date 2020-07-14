@@ -153,6 +153,7 @@ h3 {
   height: 100%;
   color: black;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }
 
 .content {
