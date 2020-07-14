@@ -3,6 +3,10 @@ const recipeCard1 = document.querySelector('.recipe-1');
 const recipeCard2 = document.querySelector('.recipe-2');
 const recipeCard3 = document.querySelector('.recipe-3');
 const recipeCard4 = document.querySelector('.recipe-4');
+const cardName1 = document.querySelector('.card-1-name');
+const cardName2 = document.querySelector('.card-2-name');
+const cardName3 = document.querySelector('.card-3-name');
+const cardName4 = document.querySelector('.card-4-name');
 const backBtn = document.querySelector('.back');
 const forwardBtn = document.querySelector('.forward');
 const pantryButton = document.querySelector('.pantry');
@@ -23,9 +27,9 @@ let recipeCards = [recipeCard1, recipeCard2, recipeCard3, recipeCard4];
 window.addEventListener('click', clickWrangler);
 window.onload = instantiateWebsiteOnLoad();
 
-function addToLists(event) {
-  console.log(event);
-}
+// function addToLists(event) {
+//   console.log(event);
+// }
 
 function clickWrangler(event) {
     modal.style.display = "none";
@@ -45,7 +49,19 @@ function clickWrangler(event) {
     addToFavorites(event.path[3].children[2].innerText);
   } else if (event.target.classList[0] === "pot-add") {
     addToCookList(event.path[3].children[2].innerText);
-  } else if (
+  } else if (event.target.closest(".card") === recipeCard1) {
+    modal.style.display = "block";
+    populateRecipe(1);
+  } else if (event.target.closest(".card") === recipeCard2) {
+    modal.style.display = "block";
+    populateRecipe(2);
+  } else if (event.target.closest(".card") === recipeCard3) {
+    modal.style.display = "block";
+    populateRecipe(3);
+  } else if (event.target.closest(".card") === recipeCard4) {
+    modal.style.display = "block";
+    populateRecipe(4);
+  }else if (
     event.target.classList[0] === "forward" ||
     event.target.classList[0] === "forward-icon"
   ) {
@@ -96,6 +112,21 @@ function instantiateWebsiteOnLoad() {
   createCards(recipes);
 }
 
+function populateRecipe(cardNumber) {
+  const cardName = document.querySelector(`.card-${cardNumber}-name`).innerText;
+  let recipe = recipes.recipes.find(recipe => {
+    return recipe.name === cardName;
+  })
+  listTitle.innerText = cardName;
+  listContents.innerText = 'Instructions: \n';
+  recipe.instructions.forEach(instruction => {
+    listContents.innerText += instruction.number + ' ' + instruction.instruction + '\n';
+  })
+  listContents.innerText += `Price: $${recipe.getTotalIngredientCost(recipe.ingredients)} \n \n`;
+  listContents.innerText += user.pantry.canMakeRecipe(recipe);
+  listContents.innerText += `\n \n You still need: \n ${user.listMissingIngredients(recipe)}`;
+}
+
 function getRandomIndex(array) {
   return Math.floor(array.length - (Math.random() * array.length));
 }
@@ -105,22 +136,22 @@ function populateUser(user) {
 }
 
 function createCards(recipes) {
-  recipeCards[0].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[0].image}><h3>${recipes.recipes[0].name}</h3><p>${recipes.recipes[0].tags}</p>`;
+  recipeCards[0].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[0].image}><h3 class="card-1-name">${recipes.recipes[0].name}</h3><p>${recipes.recipes[0].tags}</p>`;
 
-  recipeCards[1].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[1].image}><h3>${recipes.recipes[1].name}</h3><p>${recipes.recipes[1].tags}</p>`;
+  recipeCards[1].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[1].image}><h3 class="card-2-name">${recipes.recipes[1].name}</h3><p>${recipes.recipes[1].tags}</p>`;
 
-  recipeCards[2].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[2].image}><h3>${recipes.recipes[2].name}</h3><p>${recipes.recipes[2].tags}</p>`;
+  recipeCards[2].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[2].image}><h3 class="card-3-name">${recipes.recipes[2].name}</h3><p>${recipes.recipes[2].tags}</p>`;
 
-  recipeCards[3].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[3].image}><h3>${recipes.recipes[3].name}</h3><p>${recipes.recipes[3].tags}</p>`;
+  recipeCards[3].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[3].image}><h3 class="card-4-name">${recipes.recipes[3].name}</h3><p">${recipes.recipes[3].tags}</p>`;
 }
 
 function goBack() {
-  recipeCards.forEach(card => {
+  recipeCards.forEach((card, index) => {
     if (recipes.currentIndex > 0) {
       recipes.currentIndex--;
       card.innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${
         recipes.recipes[recipes.currentIndex].image
-      }><h3>${recipes.recipes[recipes.currentIndex].name}</h3><p>${
+      }><h3 class=card-${index+1}-name>${recipes.recipes[recipes.currentIndex].name}</h3><p>${
         recipes.recipes[recipes.currentIndex].tags
       }</p>`;
     }
@@ -128,10 +159,10 @@ function goBack() {
 }
 
 function goForward() {
-  recipeCards.forEach(card => {
-    if(recipes.currentIndex < 50) {
+  recipeCards.forEach((card, index) => {
+    if(recipes.currentIndex < 49) {
       recipes.currentIndex++;
-      card.innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[recipes.currentIndex].image}><h3>${recipes.recipes[recipes.currentIndex].name}</h3><p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
+      card.innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[recipes.currentIndex].image}><h3 class=card-${index+1}-name>${recipes.recipes[recipes.currentIndex].name}</h3><p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
     }
   })
 }

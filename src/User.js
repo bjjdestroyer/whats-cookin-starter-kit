@@ -109,7 +109,7 @@ class User {
     let ingredientNamesAndAmounts = ingredientNames.map((name, index) => {
       return `${name}(${missingIngredientUnits[index]}): ${Object.values(missingIngredients)[index]}`;
     })
-    return ingredientNamesAndAmounts.join(', ');
+    return ingredientNamesAndAmounts.join('\n');
   }
 
 
