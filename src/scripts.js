@@ -45,6 +45,10 @@ function clickWrangler(event) {
   } else if (event.target.closest("button") === shoppingListBtn) {
     modal.style.display = "block";
     populateList("shopping-list");
+  } else if (event.target.classList[0] === "heart-add") {
+    addToFavorites(event.path[3].children[2].innerText);
+  } else if (event.target.classList[0] === "pot-add") {
+    addToCookList(event.path[3].children[2].innerText);
   } else if (event.target.closest(".card") === recipeCard1) {
     modal.style.display = "block";
     populateRecipe(1);
@@ -57,11 +61,7 @@ function clickWrangler(event) {
   } else if (event.target.closest(".card") === recipeCard4) {
     modal.style.display = "block";
     populateRecipe(4);
-  } else if (event.target.classList[0] === "heart-add") {
-    addToFavorites(event.path[3].children[2].innerText);
-  } else if (event.target.classList[0] === "pot-add") {
-    addToCookList(event.path[3].children[2].innerText);
-  } else if (
+  }else if (
     event.target.classList[0] === "forward" ||
     event.target.classList[0] === "forward-icon"
   ) {
