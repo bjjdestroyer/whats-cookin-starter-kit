@@ -41,6 +41,14 @@ function clickWrangler(event) {
   } else if (event.target.closest("button") === shoppingListBtn) {
     modal.style.display = "block";
     populateList("shopping-list");
+  } else if(event.target.closest(".card") === recipeCard1) {
+    modal.style.display = "block";
+  } else if(event.target.closest(".card") === recipeCard2) {
+    modal.style.display = "block";
+  } else if(event.target.closest(".card") === recipeCard3) {
+    modal.style.display = "block";
+  } else if(event.target.closest(".card") === recipeCard4) {
+    modal.style.display = "block";
   } else if (event.target.classList[0] === "heart-add") {
     addToFavorites(event.path[3].children[2].innerText);
   } else if (event.target.classList[0] === "pot-add") {
