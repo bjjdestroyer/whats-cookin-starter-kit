@@ -5,12 +5,14 @@ const recipeCard3 = document.querySelector('.recipe-3');
 const recipeCard4 = document.querySelector('.recipe-4');
 const backBtn = document.querySelector('.back');
 const forwardBtn = document.querySelector('.forward');
-const pantryModal = document.querySelector('.pantry-modal');
 const pantryButton = document.querySelector('.pantry');
+const favoritesButton = document.querySelector('.favorites-list');
+const toCookBtn = document.querySelector('.to-cook-list');
+const shoppingListBtn = document.querySelector('.shopping-list');
 const closeButton = document.querySelector('.close-button');
-const pantryList = document.querySelector('.pantry-list');
-const addToFavs = document.querySelectorAll('.heart-add');
-const addToCook = document.querySelectorAll('.pot-add');
+const modal = document.querySelector('.modal');
+const listTitle = document.querySelector('.modal-title');
+const listContents = document.querySelector('.list');
 const addList = document.querySelectorAll('.button-holder');
 
 let recipes;
@@ -26,13 +28,22 @@ function addToLists(event) {
 }
 
 function clickWrangler(event) {
-    pantryModal.style.display = "none";
+    modal.style.display = "none";
   if (event.target.closest("button") === pantryButton) {
-    pantryModal.style.display = "block";
+    modal.style.display = "block";
+    populateList('pantry');
+  } else if (event.target.closest("button") === favoritesButton) {
+    modal.style.display = "block";
+    populateList("favorites");
+  } else if (event.target.closest("button") === toCookBtn) {
+    modal.style.display = "block";
+    populateList("to-cook");
+  } else if (event.target.closest("button") === shoppingListBtn) {
+    modal.style.display = "block";
+    populateList("shopping-list");
   } else if (event.target.classList[0] === "heart-add") {
     addToFavorites(event.path[3].children[2].innerText);
   } else if (event.target.classList[0] === "pot-add") {
-    console.log(event);
     addToCookList(event.path[3].children[2].innerText);
   } else if (
     event.target.classList[0] === "forward" ||
@@ -61,8 +72,19 @@ function instantiateUser(user) {
   return new User(user);
 }
 
-function populateList() {
-  pantryList.innerText = user.getPantryIngredients();
+function populateList(listType) {
+  if (listType === 'pantry') {
+    listTitle.innerText = 'Pantry Contents';
+    listContents.innerText = user.getPantryIngredients();
+  } else if (listType === 'favorites') {
+    listTitle.innerText - 'Favorite Recipes';
+    listContents.innerText = user.favoriteRecipes;
+  } else if (listType === 'to-cook') {
+    listTitle.innerText - "Recipes to Cook";
+    listContents.innerText = user.recipesToCook;
+  } else if (listType === 'shopping-list') {
+
+  }
 }
 
 function instantiateWebsiteOnLoad() {
@@ -72,7 +94,6 @@ function instantiateWebsiteOnLoad() {
   user = instantiateUser(usersData[randomUserIndex]);
   populateUser(user);
   createCards(recipes);
-  populateList();
 }
 
 function getRandomIndex(array) {
