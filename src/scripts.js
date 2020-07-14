@@ -14,6 +14,8 @@ const modal = document.querySelector('.modal');
 const listTitle = document.querySelector('.modal-title');
 const listContents = document.querySelector('.list');
 const addList = document.querySelectorAll('.button-holder');
+const searchBar = document.querySelector('.search-input');
+const tagList = document.querySelector('.tag-list');
 
 let recipes;
 let user;
