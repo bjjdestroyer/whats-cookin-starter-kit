@@ -127,7 +127,8 @@ function populateRecipe(cardNumber) {
     return recipe.name === cardName;
   })
   listTitle.innerText = cardName;
-  listContents.innerText = 'Instructions: \n';
+  listContents.innerText = user.getFullRecipe(recipe);
+  listContents.innerText += '\n Instructions: \n';
   recipe.instructions.forEach(instruction => {
     listContents.innerText += instruction.number + ' ' + instruction.instruction + '\n';
   })
