@@ -45,8 +45,11 @@ function clickWrangler(event) {
     modal.style.display = "block";
     populateList("shopping-list");
   } else if(event.target.closest("button") === filterBtn) {
-    console.log(event);
     dropdownFilter();
+  } else if(event.target.classList[0] === "tags") {
+    dropdownFilter();
+    modal.style.display = "block";
+    displayTaggedRecipes(event.target.text);
   } else if (event.target.classList[0] === "heart-add") {
     addToFavorites(event.path[3].children[2].innerText);
   } else if (event.target.classList[0] === "pot-add") {
@@ -160,4 +163,22 @@ function addToCookList(currentRecipe) {
 
 function dropdownFilter() {
   tagList.classList.toggle('show');
+}
+
+function displayTaggedRecipes(tagToFilter) {
+  let lowerTag = tagToFilter.toLowerCase();
+
+  if (lowerTag === "misc") {
+    lowerTag = "";
+  }
+
+  const filteredRecipes = recipes.filterByTag(lowerTag);
+  
+  const filteredTitles = filteredRecipes.reduce((titles, recipe) => {
+    titles.push(recipe.name);
+    return titles;
+  }, []);
+
+  listTitle.innerText = "Filtered Recipes";
+  listContents.innerText = filteredTitles;
 }
