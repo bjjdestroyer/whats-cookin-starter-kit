@@ -20,11 +20,11 @@ img {
   margin: 5%;
 }
 
-input[type=text] { 
-  width: 100%; 
+input[type=text] {
+  width: 100%;
   font-size: 2em;
-  -webkit-transition: width 0.15s ease-in-out; 
-  transition: width 0.15s ease-in-out; 
+  -webkit-transition: width 0.15s ease-in-out;
+  transition: width 0.15s ease-in-out;
 }
 
 .user-name {
@@ -157,6 +157,8 @@ h3 {
 }
 
 .content {
+  height: 70%;
+  overflow-y: auto;
   position: relative;
   background-color: bisque;
   padding: 20px;
