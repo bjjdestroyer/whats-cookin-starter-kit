@@ -15,7 +15,6 @@ class Pantry {
 
   addingNeededIngredients(neededIngredients) {
     const keysNeeded = Object.keys(neededIngredients);
-
     return this.contents.forEach(ingredient => {
       if (keysNeeded.includes(ingredient.ingredient.toString())) {
         neededIngredients[ingredient.ingredient] -= ingredient.amount;
@@ -40,7 +39,6 @@ class Pantry {
     let ingredientsNeeded = this.findingNeededIngredients(recipe);
     this.addingNeededIngredients(ingredientsNeeded);
     let ingredientsToBuy = {};
-
     Object.entries(ingredientsNeeded).forEach(([id, amount]) => {
       if (amount > 0) {
         ingredientsToBuy[id] = amount;

@@ -33,9 +33,7 @@ class Recipes {
 
   filterByIngredient(ingredientName) {
     const ingredientNeeded = this.getAllIngredients(ingredientName);
-
-    let recipeArray = []
-
+    let recipeArray = [];
     this.recipes.forEach(recipe => {
       recipe.ingredients.forEach( ingredient => {
         if (ingredientNeeded === []) {

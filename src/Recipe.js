@@ -58,7 +58,6 @@ class Recipe {
       const ingredientAmount = ingredient.quantity.amount;
       const ingredientPrice = this.getIngredientPrice(ingredient.id);
       const ingredientTotal = ingredientAmount * ingredientPrice;
-
       return (totalPrice + ingredientTotal);
     }, 0);
     return (rawCost / 100).toFixed(2);
