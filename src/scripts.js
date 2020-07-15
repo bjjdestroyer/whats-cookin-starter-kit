@@ -194,7 +194,7 @@ function goBack() {
       <button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button>
       <button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button>
       </div>
-      <img src=${recipes.recipes[recipes.currentIndex].image}> 
+      <img src=${recipes.recipes[recipes.currentIndex].image}>
       <h3 class=card-${index + 1}-name>${recipes.recipes[recipes.currentIndex].name}</h3>
       <p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
     }
@@ -240,7 +240,7 @@ function displayTaggedRecipes(tagToFilter) {
 }
 
 
-// Search Functions 
+// Search Functions
 
 function keepInput(event) {
   searchValue = event.target.value;
@@ -268,8 +268,8 @@ function searchRecipes(ingredientRecipes, inputValue) {
 }
 
 
-module.exports = {
-  getRandomIndex: getRandomIndex,
-  searchForRecipes: searchForRecipes,
-  searchRecipes: searchRecipes
-}
+// module.exports = {
+//   getRandomIndex: getRandomIndex,
+//   searchForRecipes: searchForRecipes,
+//   searchRecipes: searchRecipes
+// }
