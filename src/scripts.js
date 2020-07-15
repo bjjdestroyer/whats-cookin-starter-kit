@@ -1,38 +1,38 @@
-const userName = document.querySelector('.user-name');
-const recipeCard1 = document.querySelector('.recipe-1');
-const recipeCard2 = document.querySelector('.recipe-2');
-const recipeCard3 = document.querySelector('.recipe-3');
-const recipeCard4 = document.querySelector('.recipe-4');
-const cardName1 = document.querySelector('.card-1-name');
-const cardName2 = document.querySelector('.card-2-name');
-const cardName3 = document.querySelector('.card-3-name');
-const cardName4 = document.querySelector('.card-4-name');
-const backBtn = document.querySelector('.back');
-const forwardBtn = document.querySelector('.forward');
-const pantryButton = document.querySelector('.pantry');
-const favoritesButton = document.querySelector('.favorites-list');
-const toCookBtn = document.querySelector('.to-cook-list');
-const shoppingListBtn = document.querySelector('.shopping-list');
-const filterBtn = document.querySelector('.dropdown-btn');
-const closeButton = document.querySelector('.close-button');
-const modal = document.querySelector('.modal');
-const listTitle = document.querySelector('.modal-title');
-const listContents = document.querySelector('.list');
-const addList = document.querySelectorAll('.button-holder');
-const searchBar = document.querySelector('.search-input');
-const tagList = document.querySelector('.tag-list');
-const userInput = document.querySelector('form');
-const submitInput = document.querySelector('.search-submit');
+// const userName = document.querySelector('.user-name');
+// const recipeCard1 = document.querySelector('.recipe-1');
+// const recipeCard2 = document.querySelector('.recipe-2');
+// const recipeCard3 = document.querySelector('.recipe-3');
+// const recipeCard4 = document.querySelector('.recipe-4');
+// const cardName1 = document.querySelector('.card-1-name');
+// const cardName2 = document.querySelector('.card-2-name');
+// const cardName3 = document.querySelector('.card-3-name');
+// const cardName4 = document.querySelector('.card-4-name');
+// const backBtn = document.querySelector('.back');
+// const forwardBtn = document.querySelector('.forward');
+// const pantryButton = document.querySelector('.pantry');
+// const favoritesButton = document.querySelector('.favorites-list');
+// const toCookBtn = document.querySelector('.to-cook-list');
+// const shoppingListBtn = document.querySelector('.shopping-list');
+// const filterBtn = document.querySelector('.dropdown-btn');
+// const closeButton = document.querySelector('.close-button');
+// const modal = document.querySelector('.modal');
+// const listTitle = document.querySelector('.modal-title');
+// const listContents = document.querySelector('.list');
+// const addList = document.querySelectorAll('.button-holder');
+// const searchBar = document.querySelector('.search-input');
+// const tagList = document.querySelector('.tag-list');
+// const userInput = document.querySelector('form');
+// const submitInput = document.querySelector('.search-submit');
 
 let recipes;
 let user;
 let currentCards = [];
-let recipeCards = [recipeCard1, recipeCard2, recipeCard3, recipeCard4];
+// let recipeCards = [recipeCard1, recipeCard2, recipeCard3, recipeCard4];
 let searchValue;
 
-window.addEventListener('click', clickWrangler);
-window.onload = instantiateWebsiteOnLoad();
-userInput.addEventListener('input', keepInput);
+// window.addEventListener('click', clickWrangler);
+// window.onload = instantiateWebsiteOnLoad();
+// userInput.addEventListener('input', keepInput);
 
 function clickWrangler(event) {
     modal.style.display = "none";
@@ -241,13 +241,18 @@ function searchForRecipes(inputValue) {
 }
 
 function searchRecipes(ingredientRecipes, inputValue) {
-    return recipes.recipes.filter( recipe => {
-      const redoneRecipe = recipe.name.toLowerCase();
-      if (redoneRecipe.includes(inputValue) && ingredientRecipes.indexOf(recipe) === -1) {
-        return recipe;
-      }
-    });
-  }
+  return recipes.recipes.filter(recipe => {
+    const redoneRecipe = recipe.name.toLowerCase();
+    if (redoneRecipe.includes(inputValue) && ingredientRecipes.indexOf(recipe) === -1) {
+      return recipe;
+    }
+  });
+}
 
+module.exports = {
+  getRandomIndex: getRandomIndex,
+  searchForRecipes: searchForRecipes,
+  searchRecipes: searchRecipes
+}
   // prevent duplicates
   // if search recipes === none, don't do anything
