@@ -44,7 +44,11 @@ function clickWrangler(event) {
     dropdownFilter();
     modal.style.display = "block";
     displayTaggedRecipes(event.target.text);
-  } else if (event.target.closest(".card") === recipeCard1) {
+  } else if (event.target.classList[0] === "heart-add") {
+    user.addToFavorites(event.path[3].children[2].innerText);
+  } else if (event.target.classList[0] === "pot-add") {
+    user.addToRecipesToCook(event.path[3].children[2].innerText);
+  }else if (event.target.closest(".card") === recipeCard1) {
     modal.style.display = "block";
     populateRecipe(1);
   } else if (event.target.closest(".card") === recipeCard2) {
