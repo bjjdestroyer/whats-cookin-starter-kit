@@ -44,6 +44,8 @@ input[type=text] {
   color: #EC9F05;
   margin: 0;
   padding-bottom: 0.5em;
+  box-shadow: 2px 6px 10px #802202;
+  text-shadow: 2px 2px 4px #724c01;
 }
 
 .search-bar {
@@ -79,11 +81,12 @@ form {
   border: none;
   background-color: #F5BB00;
   font-family: "Righteous", cursive;
-  font-size: 1em;
+  font-size: 1.1em;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 0 1 calc(20% - 1em);
+  padding: 1em;
 }
 
 .tag-list {
@@ -120,9 +123,13 @@ main {
   grid-gap: 2.5%;
 }
 
-.card-btn,
+.card-btn {
+  background-color: #EC9F05;
+}
+
 .card {
   background-color: #EC9F05;
+  box-shadow: 2px 6px 10px #d38d00;
 }
 
 .button-holder {
