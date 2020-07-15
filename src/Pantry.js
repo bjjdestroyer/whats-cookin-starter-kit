@@ -27,7 +27,7 @@ class Pantry {
     let neededIngredients = this.findingNeededIngredients(recipe);
     this.addingNeededIngredients(neededIngredients);
     const validationArray = Object.values(neededIngredients).map(amount => {
-      return amount < 0;
+      return amount <= 0;
     });
     if (validationArray.includes(false)) {
       return "You do not have sufficient ingredients for this recipe.";
