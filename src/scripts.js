@@ -80,8 +80,6 @@ function getRandomIndex(array) {
   return Math.floor(array.length - Math.random() * array.length);
 }
 
-// Functions on Window Load
-
 function instantiateWebsiteOnLoad() {
   recipes = instantiateRecipes();
   instantiateEachRecipe(recipes);
@@ -143,8 +141,6 @@ function createCards(recipes) {
   <p>${recipes.recipes[3].tags.join(", ")}</p>`;
 }
 
-// Add Lists to Modal Windows
-
 function populateList(listType, listInfo) {
   if (listType === "pantry") {
     listTitle.innerText = "Pantry Contents";
@@ -166,8 +162,6 @@ function populateList(listType, listInfo) {
   }
 }
 
-// Add Recipe Info to Modal Window
-
 function populateRecipe(cardNumber) {
   const cardName = document.querySelector(`.card-${cardNumber}-name`).innerText;
   let recipe = recipes.recipes.find(recipe => {
@@ -187,8 +181,6 @@ function populateRecipe(cardNumber) {
     listContents.innerText += `\n \n You still need: \n ${user.listMissingIngredients(recipe)}`;
   }
 }
-
-// Pagination Functions
 
 function goBack() {
   recipeCards.forEach((card, index) => {
@@ -224,8 +216,6 @@ function goForward() {
   })
 }
 
-// Filter Functions
-
 function dropdownFilter() {
   tagList.classList.toggle('show');
 }
@@ -246,9 +236,6 @@ function displayTaggedRecipes(tagToFilter) {
 
   populateList('filtered', filteredTitles);
 }
-
-
-// Search Functions
 
 function keepInput(event) {
   searchValue = event.target.value;
