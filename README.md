@@ -9,30 +9,24 @@ This project was to create a website that hosts a both users and recipes that th
 2. Go to the directory you would like this project to live in and type in 'git clone [copied key]'
 3. Once it is installed, in terminal type in npm install
 4. If you would like to see the test cases passed, run npm test
-5. To see the site in action, in terminal type open index.html
+5. To see the site in action, in terminal type open src/index.html
 
 ### Examples of Project
 
 ### Background
-Talk about what we're doing and why
+For this project, we were given a set of class requirements and data files to use. We were required to come up with our own MVP and design decisions for our app. During the planning stages, we came up with an outline of iterations to have an idea of what we wanted to complete and when. We also created a wireframe of what we wanted our application to look like on the browser. A lot of decisions on the look of the project was decided while designing the site. In addition, we tend to enjoy Javascript more than CSS, so our focus was more on functionality than design.
 
 ### Reflection
-Talk about what the project was like; issues, stopping points, where we excelled
+Taryn - I really enjoyed working on this project! It was definitely a challenge, but one I greatly enjoyed. I felt like I learned a lot, especially about accessing arrays and objects, and iterating over both. I also gained a lot more experience with DOM manipulation, which I really enjoyed. I am also really proud of figuring out how to get the filter and search functions to work. I do think that I need to work on improving my CSS and DOM manipulation because I had so much trouble inserting the data into the HTML to display on the page.
 
 ### Collaborators
 - Taryn Martin @bjjdestroyer
 - Ben McClung @aurumvalian
 
 ### Attributions:
-- Heart, cooking pot, and pantry icons made by Freepik from www.flaticon.com
+- Heart, cooking pot, filter, and pantry icons made by Freepik from www.flaticon.com
 - Menu icon made by iconixar from www.flaticon.com
 - Arrow icons made by Darius Dan from www.flaticon.com
-
-## Linting Your Code 
-
-Run the command in your terminal npm run lint to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
-
-Your linter will look only at the JavaScript files you have within the src and the test directories.
 
 ### Project Timeline:
 
