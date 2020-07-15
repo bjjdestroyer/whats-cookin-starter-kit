@@ -35,8 +35,8 @@ Taryn - I really enjoyed working on this project! It was definitely a challenge,
 Ben - I loved this project! It was definitely a challenge, but I learned a lot about working with inconsistent data sets, using array iterator methods, and pseudocoding out more difficult functions. I also learned some cool new HTML pieces and some CSS styling for transparent backgrounds. In terms of learning, I would consider this project my best so far. I think I still need to work on making more tests and really testing for every little thing the function does, because I ran into a few errors that were based around the different data that could have been solved with further testing.
 
 ### Collaborators
-- Taryn Martin @bjjdestroyer
-- Ben McClung @aurumvalian
+- [Taryn Martin](https://github.com/bjjdestroyer)
+- [Ben McClung](https://github.com/AurumValian)
 
 ### Attributions:
 - Heart, cooking pot, filter, and pantry icons made by Freepik from www.flaticon.com
