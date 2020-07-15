@@ -33,7 +33,7 @@ class User {
     this.favoriteRecipes.filter( recipe => {
       if (recipe.name === userInput) {
         return recipe;
-      } else if (recipe.getIngredientNameList().includes(userInput)) {
+      } else if (recipe.getIngredientNameList(recipe.ingredients).includes(userInput)) {
         return recipe;
       }
     });
