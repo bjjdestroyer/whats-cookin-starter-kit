@@ -53,3 +53,7 @@ Ben - I loved this project! It was definitely a challenge, but I learned a lot a
 	- display recipe
 	- list what ingredients are missing from a recipe
 	- CSS is clean and looks nice
+	
+### Future Plans
+
+In the future, we would like to add a shopping list button that displays the ingredients needed and the total price for those ingredients for a specific recipe added to the Meals to Cook list. We also want to make the website responsive and compatible with mobile devices. Finally, we want to make clicking on a recipe in Favorite Recipes or Meals to Cook open the recipe card.
