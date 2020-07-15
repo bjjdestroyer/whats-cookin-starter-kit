@@ -12,6 +12,17 @@ This project was to create a website that hosts a both users and recipes that th
 5. To see the site in action, in terminal type open src/index.html
 
 ### Examples of Project
+#### Recipe card being displayed on click
+![Shows recipe card being displayed](assets/recipes-card.gif)
+
+#### Moving forward in backward through all recipes
+![Shows recipe card being displayed](assets/pagination.gif)
+
+#### Filtering recipes based on tags
+![Shows recipe card being displayed](assets/filter-recipes.gif)
+
+#### Searching recipes based on ingredient
+![Shows recipe card being displayed](assets/search-recipes.gif)
 
 ### Background
 For this project, we were given a set of class requirements and data files to use. We were required to come up with our own MVP and design decisions for our app. During the planning stages, we came up with an outline of iterations to have an idea of what we wanted to complete and when. We also created a wireframe of what we wanted our application to look like on the browser. A lot of decisions on the look of the project was decided while designing the site. In addition, we tend to enjoy Javascript more than CSS, so our focus was more on functionality than design.
