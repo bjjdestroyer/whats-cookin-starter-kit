@@ -3,30 +3,20 @@ const recipeCard1 = document.querySelector('.recipe-1');
 const recipeCard2 = document.querySelector('.recipe-2');
 const recipeCard3 = document.querySelector('.recipe-3');
 const recipeCard4 = document.querySelector('.recipe-4');
-const cardName1 = document.querySelector('.card-1-name');
-const cardName2 = document.querySelector('.card-2-name');
-const cardName3 = document.querySelector('.card-3-name');
-const cardName4 = document.querySelector('.card-4-name');
-const backBtn = document.querySelector('.back');
-const forwardBtn = document.querySelector('.forward');
 const pantryButton = document.querySelector('.pantry');
 const favoritesButton = document.querySelector('.favorites-list');
 const toCookBtn = document.querySelector('.to-cook-list');
 const shoppingListBtn = document.querySelector('.shopping-list');
 const filterBtn = document.querySelector('.dropdown-btn');
-const closeButton = document.querySelector('.close-button');
 const modal = document.querySelector('.modal');
 const listTitle = document.querySelector('.modal-title');
 const listContents = document.querySelector('.list');
-const addList = document.querySelectorAll('.button-holder');
-const searchBar = document.querySelector('.search-input');
 const tagList = document.querySelector('.tag-list');
 const userInput = document.querySelector('form');
 const submitInput = document.querySelector('.search-submit');
 
 let recipes;
 let user;
-let currentCards = [];
 let recipeCards = [recipeCard1, recipeCard2, recipeCard3, recipeCard4];
 let searchValue;
 
@@ -35,7 +25,7 @@ window.onload = instantiateWebsiteOnLoad();
 userInput.addEventListener('input', keepInput);
 
 function clickWrangler(event) {
-    modal.style.display = "none";
+  modal.style.display = "none";
   if (event.target.closest("button") === pantryButton) {
     modal.style.display = "block";
     populateList("pantry");
@@ -54,10 +44,6 @@ function clickWrangler(event) {
     dropdownFilter();
     modal.style.display = "block";
     displayTaggedRecipes(event.target.text);
-  } else if (event.target.classList[0] === "heart-add") {
-    user.addToFavorites(event.path[3].children[2].innerText);
-  } else if (event.target.classList[0] === "pot-add") {
-    user.addToRecipesToCook(event.path[3].children[2].innerText);
   } else if (event.target.closest(".card") === recipeCard1) {
     modal.style.display = "block";
     populateRecipe(1);
@@ -86,8 +72,19 @@ function clickWrangler(event) {
   }
 }
 
-function keepInput(event) {
-  searchValue = event.target.value;
+function getRandomIndex(array) {
+  return Math.floor(array.length - Math.random() * array.length);
+}
+
+// Functions on Window Load
+
+function instantiateWebsiteOnLoad() {
+  recipes = instantiateRecipes();
+  instantiateEachRecipe(recipes);
+  let randomUserIndex = getRandomIndex(usersData);
+  user = instantiateUser(usersData[randomUserIndex]);
+  populateUser(user);
+  createCards(recipes);
 }
 
 function instantiateRecipes() {
@@ -104,29 +101,68 @@ function instantiateUser(user) {
   return new User(user);
 }
 
-function populateList(listType) {
-  if (listType === 'pantry') {
-    listTitle.innerText = 'Pantry Contents';
+function populateUser(user) {
+  userName.innerText = `Hi ${user.name}!`;
+}
+
+function createCards(recipes) {
+  recipeCards[0].innerHTML = `<div class="button-holder">
+    <button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button>
+    <button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button>
+  </div>
+  <img src=${recipes.recipes[0].image}>
+  <h3 class="card-1-name">${recipes.recipes[0].name}</h3>
+  <p>${recipes.recipes[0].tags}</p>`;
+
+  recipeCards[1].innerHTML = `<div class="button-holder">
+    <button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button>
+    <button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button>
+  </div>
+  <img src=${recipes.recipes[1].image}>
+  <h3 class="card-1-name">${recipes.recipes[1].name}</h3>
+  <p>${recipes.recipes[1].tags}</p>`;
+
+  recipeCards[2].innerHTML = `<div class="button-holder">
+    <button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button>
+    <button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button>
+  </div>
+  <img src=${recipes.recipes[2].image}>
+  <h3 class="card-1-name">${recipes.recipes[2].name}</h3>
+  <p>${recipes.recipes[2].tags}</p>`;
+
+  recipeCards[3].innerHTML = `<div class="button-holder">
+    <button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button>
+    <button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button>
+  </div>
+  <img src=${recipes.recipes[3].image}>
+  <h3 class="card-1-name">${recipes.recipes[3].name}</h3>
+  <p>${recipes.recipes[3].tags}</p>`;
+}
+
+// Add Lists to Modal Windows
+
+function populateList(listType, listInfo) {
+  if (listType === "pantry") {
+    listTitle.innerText = "Pantry Contents";
     listContents.innerText = user.getPantryIngredients();
-  } else if (listType === 'favorites') {
-    listTitle.innerText = 'Favorite Recipes';
-    listContents.innerText = user.favoriteRecipes;
-  } else if (listType === 'to-cook') {
+  } else if (listType === "favorites") {
+    listTitle.innerText = "Favorite Recipes";
+    listContents.innerText = user.favoriteRecipes.join("\n");
+  } else if (listType === "to-cook") {
     listTitle.innerText = "Recipes to Cook";
-    listContents.innerText = user.recipesToCook;
-  } else if (listType === 'shopping-list') {
+    listContents.innerText = user.recipesToCook.join("\n");
+  } else if (listType === "shopping-list") {
     listTitle.innerText = "Shopping List";
+  } else if (listType === "filtered") {
+    listTitle.innerText = "Filtered Recipes";
+    listContents.innerText = listInfo.join("\n");
+  } else if (listType === 'searched') {
+    listTitle.innerText = "Searched Ingredients & Recipes";
+    listContents.innerText = listInfo.join('\n');
   }
 }
 
-function instantiateWebsiteOnLoad() {
-  recipes = instantiateRecipes();
-  instantiateEachRecipe(recipes);
-  let randomUserIndex = getRandomIndex(usersData);
-  user = instantiateUser(usersData[randomUserIndex]);
-  populateUser(user);
-  createCards(recipes);
-}
+// Add Recipe Info to Modal Window
 
 function populateRecipe(cardNumber) {
   const cardName = document.querySelector(`.card-${cardNumber}-name`).innerText;
@@ -148,45 +184,39 @@ function populateRecipe(cardNumber) {
   }
 }
 
-function getRandomIndex(array) {
-  return Math.floor(array.length - (Math.random() * array.length));
-}
-
-function populateUser(user) {
-  userName.innerText = `Hi ${user.name}!`;
-}
-
-function createCards(recipes) {
-  recipeCards[0].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[0].image}><h3 class="card-1-name">${recipes.recipes[0].name}</h3><p>${recipes.recipes[0].tags}</p>`;
-
-  recipeCards[1].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[1].image}><h3 class="card-2-name">${recipes.recipes[1].name}</h3><p>${recipes.recipes[1].tags}</p>`;
-
-  recipeCards[2].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[2].image}><h3 class="card-3-name">${recipes.recipes[2].name}</h3><p>${recipes.recipes[2].tags}</p>`;
-
-  recipeCards[3].innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[3].image}><h3 class="card-4-name">${recipes.recipes[3].name}</h3><p">${recipes.recipes[3].tags}</p>`;
-}
+// Pagination Functions
 
 function goBack() {
   recipeCards.forEach((card, index) => {
     if (recipes.currentIndex > 0) {
       recipes.currentIndex--;
-      card.innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${
-        recipes.recipes[recipes.currentIndex].image
-      }><h3 class=card-${index+1}-name>${recipes.recipes[recipes.currentIndex].name}</h3><p>${
-        recipes.recipes[recipes.currentIndex].tags
-      }</p>`;
+      card.innerHTML = `<div class="button-holder">
+      <button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button>
+      <button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button>
+      </div>
+      <img src=${recipes.recipes[recipes.currentIndex].image}> 
+      <h3 class=card-${index + 1}-name>${recipes.recipes[recipes.currentIndex].name}</h3>
+      <p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
     }
   })
 }
 
 function goForward() {
   recipeCards.forEach((card, index) => {
-    if(recipes.currentIndex < 49) {
+    if (recipes.currentIndex < 49) {
       recipes.currentIndex++;
-      card.innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[recipes.currentIndex].image}><h3 class=card-${index+1}-name>${recipes.recipes[recipes.currentIndex].name}</h3><p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
+      card.innerHTML = `<div class="button-holder">
+      <button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button>
+      <button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button>
+      </div>
+      <img src=${recipes.recipes[recipes.currentIndex].image}>
+      <h3 class=card-${index + 1}-name>${recipes.recipes[recipes.currentIndex].name}</h3>
+      <p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
     }
   })
 }
+
+// Filter Functions
 
 function dropdownFilter() {
   tagList.classList.toggle('show');
@@ -206,8 +236,14 @@ function displayTaggedRecipes(tagToFilter) {
     return titles;
   }, []);
 
-  listTitle.innerText = "Filtered Recipes";
-  listContents.innerText = filteredTitles;
+  populateList('filtered', filteredTitles);
+}
+
+
+// Search Functions 
+
+function keepInput(event) {
+  searchValue = event.target.value;
 }
 
 function searchForRecipes(inputValue) {
@@ -219,12 +255,11 @@ function searchForRecipes(inputValue) {
     return recipe.name;
   })
 
-  listTitle.innerText = "Searched Ingredients & Recipes";
-  listContents.innerText = finalList;
+  populateList('searched', finalList);
 }
 
 function searchRecipes(ingredientRecipes, inputValue) {
-  return recipes.recipes.filter(recipe => {
+  return recipes.recipes.filter( recipe => {
     const redoneRecipe = recipe.name.toLowerCase();
     if (redoneRecipe.includes(inputValue) && ingredientRecipes.indexOf(recipe) === -1) {
       return recipe;
@@ -232,10 +267,9 @@ function searchRecipes(ingredientRecipes, inputValue) {
   });
 }
 
+
 module.exports = {
   getRandomIndex: getRandomIndex,
   searchForRecipes: searchForRecipes,
   searchRecipes: searchRecipes
 }
-  // prevent duplicates
-  // if search recipes === none, don't do anything
