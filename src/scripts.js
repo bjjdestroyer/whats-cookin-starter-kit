@@ -55,9 +55,9 @@ function clickWrangler(event) {
     modal.style.display = "block";
     displayTaggedRecipes(event.target.text);
   } else if (event.target.classList[0] === "heart-add") {
-    addToFavorites(event.path[3].children[2].innerText);
+    user.addToFavorites(event.path[3].children[2].innerText);
   } else if (event.target.classList[0] === "pot-add") {
-    addToCookList(event.path[3].children[2].innerText);
+    user.addToRecipesToCook(event.path[3].children[2].innerText);
   } else if (event.target.closest(".card") === recipeCard1) {
     modal.style.display = "block";
     populateRecipe(1);
@@ -182,22 +182,6 @@ function goForward() {
       card.innerHTML = `<div class="button-holder"><button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button><button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button></div><img src=${recipes.recipes[recipes.currentIndex].image}><h3 class=card-${index+1}-name>${recipes.recipes[recipes.currentIndex].name}</h3><p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
     }
   })
-}
-
-function addToFavorites (currentRecipe) {
-  if (user.favoriteRecipes.indexOf(currentRecipe) === -1) {
-    user.favoriteRecipes.push(currentRecipe);
-  } else {
-    return;
-  }
-}
-
-function addToCookList(currentRecipe) {
-  if (user.recipesToCook.indexOf(currentRecipe) === -1) {
-    user.recipesToCook.push(currentRecipe);
-  } else {
-    return;
-  }
 }
 
 function dropdownFilter() {
