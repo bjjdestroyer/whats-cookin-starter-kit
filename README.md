@@ -19,6 +19,8 @@ For this project, we were given a set of class requirements and data files to us
 ### Reflection
 Taryn - I really enjoyed working on this project! It was definitely a challenge, but one I greatly enjoyed. I felt like I learned a lot, especially about accessing arrays and objects, and iterating over both. I also gained a lot more experience with DOM manipulation, which I really enjoyed. I am also really proud of figuring out how to get the filter and search functions to work. I do think that I need to work on improving my CSS and DOM manipulation because I had so much trouble inserting the data into the HTML to display on the page.
 
+Ben - I loved this project! It was definitely a challenge, but I learned a lot about working with inconsistent data sets, using array iterator methods, and pseudocoding out more difficult functions. I also learned some cool new HTML pieces and some CSS styling for transparent backgrounds. In terms of learning, I would consider this project my best so far. I think I still need to work on making more tests and really testing for every little thing the function does, because I ran into a few errors that were based around the different data that could have been solved with further testing.
+
 ### Collaborators
 - Taryn Martin @bjjdestroyer
 - Ben McClung @aurumvalian
@@ -31,23 +33,23 @@ Taryn - I really enjoyed working on this project! It was definitely a challenge,
 ### Project Timeline:
 
 #### Iteration 1:
-- create user & recipe class
-- create test file for user & recipe class
+- Create Recipe and Recipes classes
+- Create Test File for Recipe and Recipes classes
 
 #### Iteration 2:
-- create pantry class
-- create pantry test file
+- Create Pantry and User classes
+- Create Test File for Pantry and User classes
 
 #### Iteration 3:
-- Set up basic HTML layout
-- Set up basic CSS layout
-- Set up event listeners and helper functions in scripts.js
+- Set up Basic HTML Layout
+- Set up Basic CSS Design
+- Set up Event Listeners and Helper Functions in scripts
 
 #### Iteration 4 (MVP):
-- DOM manipulation - recipe images are on site; data can populate site
-- local storage for user?
-- fully functional; can
+- DOM Manipulation - recipe images are on site; data can populate site
+- Functional; can
 	- save favorites and recipes to cook
 	- list what user has in pantry
-	- list what needs to be bought at grocery store
+	- display recipe
+	- list what ingredients are missing from a recipe
 	- CSS is clean and looks nice
