@@ -13,7 +13,7 @@ This project was to create a website that hosts a both users and recipes that th
 
 ### Examples of Project
 #### Recipe card being displayed on click
-![Shows recipe card being displayed](assets/recipes-card.gif)
+![Shows recipe card being displayed](assets/recipe-card.gif)
 
 #### Moving forward in backward through all recipes
 ![Shows recipe card being displayed](assets/pagination.gif)
