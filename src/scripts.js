@@ -119,7 +119,7 @@ function createCards(recipes) {
     <button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button>
   </div>
   <img src=${recipes.recipes[1].image}>
-  <h3 class="card-1-name">${recipes.recipes[1].name}</h3>
+  <h3 class="card-2-name">${recipes.recipes[1].name}</h3>
   <p>${recipes.recipes[1].tags}</p>`;
 
   recipeCards[2].innerHTML = `<div class="button-holder">
@@ -127,7 +127,7 @@ function createCards(recipes) {
     <button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button>
   </div>
   <img src=${recipes.recipes[2].image}>
-  <h3 class="card-1-name">${recipes.recipes[2].name}</h3>
+  <h3 class="card-3-name">${recipes.recipes[2].name}</h3>
   <p>${recipes.recipes[2].tags}</p>`;
 
   recipeCards[3].innerHTML = `<div class="button-holder">
@@ -135,7 +135,7 @@ function createCards(recipes) {
     <button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button>
   </div>
   <img src=${recipes.recipes[3].image}>
-  <h3 class="card-1-name">${recipes.recipes[3].name}</h3>
+  <h3 class="card-4-name">${recipes.recipes[3].name}</h3>
   <p>${recipes.recipes[3].tags}</p>`;
 }
 
@@ -268,8 +268,8 @@ function searchRecipes(ingredientRecipes, inputValue) {
 }
 
 
-module.exports = {
-  getRandomIndex: getRandomIndex,
-  searchForRecipes: searchForRecipes,
-  searchRecipes: searchRecipes
-}
+// module.exports = {
+//   getRandomIndex: getRandomIndex,
+//   searchForRecipes: searchForRecipes,
+//   searchRecipes: searchRecipes
+// }
