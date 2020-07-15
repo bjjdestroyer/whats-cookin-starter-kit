@@ -4,7 +4,7 @@
 
 class Recipes {
   constructor(recipes = recipeData) {
-    this.recipes = recipeData;
+    this.recipes = recipes;
     this.currentIndex = 3;
   }
 
@@ -17,7 +17,7 @@ class Recipes {
         return noTag;
       }
     });
-  };
+  }
 
   getAllIngredients(ingredientName) {
     const ingredientNeeded = ingredientsData.filter(ingredient => {
@@ -29,7 +29,7 @@ class Recipes {
     });
 
     return ingredientNeeded;
-  };
+  }
 
   filterByIngredient(ingredientName) {
     const ingredientNeeded = this.getAllIngredients(ingredientName);
