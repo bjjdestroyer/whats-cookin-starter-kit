@@ -12,6 +12,8 @@ This project was to create a website that hosts a both users and recipes that th
 5. To see the site in action, in terminal type open src/index.html
 
 ### Examples of Project
+- There were some issues with some glitches on the first two gifs, that seems to be the gif capture software
+
 #### Recipe card being displayed on click
 ![Shows recipe card being displayed](assets/recipe-card.gif)
 
