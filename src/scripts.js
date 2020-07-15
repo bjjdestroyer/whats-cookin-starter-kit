@@ -116,7 +116,7 @@ function createCards(recipes) {
   </div>
   <img src=${recipes.recipes[0].image}>
   <h3 class="card-1-name">${recipes.recipes[0].name}</h3>
-  <p>${recipes.recipes[0].tags}</p>`;
+  <p>${recipes.recipes[0].tags.join(", ")}</p>`;
 
   recipeCards[1].innerHTML = `<div class="button-holder">
     <button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button>
@@ -124,7 +124,7 @@ function createCards(recipes) {
   </div>
   <img src=${recipes.recipes[1].image}>
   <h3 class="card-2-name">${recipes.recipes[1].name}</h3>
-  <p>${recipes.recipes[1].tags}</p>`;
+  <p>${recipes.recipes[1].tags.join(", ")}</p>`;
 
   recipeCards[2].innerHTML = `<div class="button-holder">
     <button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button>
@@ -132,7 +132,7 @@ function createCards(recipes) {
   </div>
   <img src=${recipes.recipes[2].image}>
   <h3 class="card-3-name">${recipes.recipes[2].name}</h3>
-  <p>${recipes.recipes[2].tags}</p>`;
+  <p>${recipes.recipes[2].tags.join(", ")}</p>`;
 
   recipeCards[3].innerHTML = `<div class="button-holder">
     <button class="to-cook card-btn"><img class="pot-add icon" src="../assets/cooking-pot.svg"></button>
@@ -140,7 +140,7 @@ function createCards(recipes) {
   </div>
   <img src=${recipes.recipes[3].image}>
   <h3 class="card-4-name">${recipes.recipes[3].name}</h3>
-  <p>${recipes.recipes[3].tags}</p>`;
+  <p>${recipes.recipes[3].tags.join(", ")}</p>`;
 }
 
 // Add Lists to Modal Windows
@@ -199,8 +199,10 @@ function goBack() {
       <button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button>
       </div>
       <img src=${recipes.recipes[recipes.currentIndex].image}>
-      <h3 class=card-${index + 1}-name>${recipes.recipes[recipes.currentIndex].name}</h3>
-      <p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
+      <h3 class=card-${index + 1}-name>${
+        recipes.recipes[recipes.currentIndex].name
+      }</h3>
+      <p>${recipes.recipes[recipes.currentIndex].tags.join(", ")}</p>`;
     }
   })
 }
@@ -214,8 +216,10 @@ function goForward() {
       <button class="favorite card-btn"><img class="heart-add icon" src="../assets/heart.svg"></button>
       </div>
       <img src=${recipes.recipes[recipes.currentIndex].image}>
-      <h3 class=card-${index + 1}-name>${recipes.recipes[recipes.currentIndex].name}</h3>
-      <p>${recipes.recipes[recipes.currentIndex].tags}</p>`;
+      <h3 class=card-${index + 1}-name>${
+        recipes.recipes[recipes.currentIndex].name
+      }</h3>
+      <p>${recipes.recipes[recipes.currentIndex].tags.join(", ")}</p>`;
     }
   })
 }
