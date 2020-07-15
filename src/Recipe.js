@@ -36,7 +36,7 @@ class Recipe {
   }
 
   getIngredientObjects(ingredientPiece) {
-    if(typeof(ingredientPiece === 'number')) {
+    if (typeof(ingredientPiece === 'number')) {
       return ingredientPiece.map(id => {
         return ingredientsData.find(ingredient => {
           return id === ingredient.id;
@@ -61,7 +61,7 @@ class Recipe {
 
       return (totalPrice + ingredientTotal);
     }, 0);
-    return (rawCost/100).toFixed(2);
+    return (rawCost / 100).toFixed(2);
   }
 
   returnRecipeInstructions() {
