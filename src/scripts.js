@@ -20,9 +20,9 @@ let user;
 let recipeCards = [recipeCard1, recipeCard2, recipeCard3, recipeCard4];
 let searchValue;
 
-window.addEventListener('click', clickWrangler);
-window.onload = instantiateWebsiteOnLoad();
-userInput.addEventListener('input', keepInput);
+// window.addEventListener('click', clickWrangler);
+// window.onload = instantiateWebsiteOnLoad();
+// userInput.addEventListener('input', keepInput);
 
 function clickWrangler(event) {
   modal.style.display = "none";
@@ -266,4 +266,11 @@ function searchRecipes(ingredientRecipes, inputValue) {
       return recipe;
     }
   });
+}
+
+
+module.exports = {
+  getRandomIndex: getRandomIndex,
+  searchForRecipes: searchForRecipes,
+  searchRecipes: searchRecipes
 }
