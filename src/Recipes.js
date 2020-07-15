@@ -20,7 +20,7 @@ class Recipes {
   };
 
   getAllIngredients(ingredientName) {
-    const ingredientNeeded = fullIngredientsList.filter(ingredient => {
+    const ingredientNeeded = ingredientsData.filter(ingredient => {
       if (ingredient.name === undefined) {
         return;
       } else if (ingredient.name.includes(ingredientName)) {
@@ -42,7 +42,7 @@ class Recipes {
           return;
         }
         ingredientNeeded.forEach(needIngredient => {
-          if (ingredient.id === needIngredient.id) {
+          if (ingredient.id === needIngredient.id && recipeArray.indexOf(recipe) === -1) {
             recipeArray.push(recipe);
           }
         })
