@@ -81,6 +81,7 @@ function clickWrangler(event) {
   ) {
     goBack();
   } else if (event.target.closest("button") === submitInput) {
+    modal.style.display = "block";
     searchForRecipes(searchValue);
   }
 }
@@ -221,6 +222,31 @@ function displayTaggedRecipes(tagToFilter) {
 }
 
 function searchForRecipes(inputValue) {
-  event.preventDefault
-  console.log(inputValue);
+  event.preventDefault();
+  const ingredientRecipes = recipes.filterByIngredient(inputValue);
+  const searchedRecipes = searchRecipes(ingredientRecipes, inputValue);
+  const allRecipes = ingredientRecipes.concat(searchedRecipes);
+
+  console.log(ingredientRecipes);
+  console.log(searchedRecipes);
+  console.log(allRecipes);
+
+  const finalList = allRecipes.map(recipe => {
+    return recipe.name;
+  })
+
+  listTitle.innerText = "Searched Ingredients & Recipes";
+  listContents.innerText = finalList;
 }
+
+function searchRecipes(ingredientRecipes, inputValue) {
+    return recipes.recipes.filter( recipe => {
+      const redoneRecipe = recipe.name.toLowerCase();
+      if (redoneRecipe.includes(inputValue) && ingredientRecipes.indexOf(recipe) === -1) {
+        return recipe;
+      }
+    });
+  }
+
+  // prevent duplicates
+  // if search recipes === none, don't do anything
