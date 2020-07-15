@@ -20,9 +20,9 @@ let user;
 let recipeCards = [recipeCard1, recipeCard2, recipeCard3, recipeCard4];
 let searchValue;
 
-// window.addEventListener('click', clickWrangler);
-// window.onload = instantiateWebsiteOnLoad();
-// userInput.addEventListener('input', keepInput);
+window.addEventListener('click', clickWrangler);
+window.onload = instantiateWebsiteOnLoad();
+userInput.addEventListener('input', keepInput);
 
 function clickWrangler(event) {
   modal.style.display = "none";
@@ -169,6 +169,7 @@ function populateRecipe(cardNumber) {
   let recipe = recipes.recipes.find(recipe => {
     return recipe.name === cardName;
   })
+  let enoughIngredients;
   listTitle.innerText = cardName;
   listContents.innerText = user.getFullRecipe(recipe);
   listContents.innerText += '\n Instructions: \n';
@@ -177,7 +178,10 @@ function populateRecipe(cardNumber) {
   })
   listContents.innerText += `Price: $${recipe.getTotalIngredientCost(recipe.ingredients)} \n \n`;
   listContents.innerText += user.pantry.canMakeRecipe(recipe);
-  listContents.innerText += `\n \n You still need: \n ${user.listMissingIngredients(recipe)}`;
+  if (user.pantry.canMakeRecipe(recipe) ===
+    "You do not have sufficient ingredients for this recipe.") {
+    listContents.innerText += `\n \n You still need: \n ${user.listMissingIngredients(recipe)}`;
+  }
 }
 
 // Pagination Functions
@@ -247,11 +251,6 @@ function searchForRecipes(inputValue) {
   const ingredientRecipes = recipes.filterByIngredient(inputValue);
   const searchedRecipes = searchRecipes(ingredientRecipes, inputValue);
   const allRecipes = ingredientRecipes.concat(searchedRecipes);
-
-  console.log(ingredientRecipes);
-  console.log(searchedRecipes);
-  console.log(allRecipes);
-
   const finalList = allRecipes.map(recipe => {
     return recipe.name;
   })
